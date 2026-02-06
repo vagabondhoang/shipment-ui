@@ -1,0 +1,12 @@
+export type ShipmentStatus = 'OPEN' | 'IN_TRANSIT' | 'DELIVERED';
+
+export interface Shipment {
+  id: string;
+  client_name: string;
+  container_label: string;
+  status: ShipmentStatus;
+  arrival_date: string;
+  delivery_by_date: string;
+  eta: string;
+  warehouse_id: string;
+}
