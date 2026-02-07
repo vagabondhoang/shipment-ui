@@ -1,5 +1,7 @@
+import { ShipmentsPage } from "@/pages/ShipmentsPage";
+
 function App() {
-  return <div>Shipment Management</div>;
+  return <ShipmentsPage />;
 }
 
 export default App;

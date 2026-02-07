@@ -1,0 +1,59 @@
+.confirm-dialog {
+    border: none;
+    border-radius: 12px;
+    padding: 24px;
+    width: 420px;
+    max-width: 90%;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+
+    animation: dialog-in 180ms ease;
+}
+
+.confirm-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.45);
+    animation: backdrop-in 180ms ease;
+}
+
+@keyframes dialog-in {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+
+@keyframes backdrop-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* actions */
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+button {
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button.primary {
+    background: #2563eb;
+    color: white;
+    border: none;
+}
+
