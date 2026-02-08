@@ -18,7 +18,7 @@ function DetailRow({
     <div style={{ marginBottom: 14 }}>
       <div
         style={{
-          fontSize: 13,
+          fontSize: 14,
           fontWeight: 600,
           marginBottom: 4,
           display: "flex",
@@ -98,6 +98,8 @@ export function ShipmentDetailsPanel({
           borderRadius: 8,
           padding: 16,
           background: "#fff",
+          maxHeight: "calc(100vh - 140px)",
+          overflowY: "auto",
         }}
       >
         <h2 style={{ marginBottom: 16 }}>Container Details</h2>

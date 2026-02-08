@@ -9,10 +9,14 @@ import type { ShipmentStatus } from "@/types/shipment";
 
 import { useShipments } from "@/hooks/useShipments";
 import { groupShipmentsByStatus } from "@/utils/shipment";
+import { readShipmentQuery, writeShipmentQuery } from "@/utils/query";
 
 export function ShipmentsPage() {
+  const initial = readShipmentQuery();
   const [selectedId, setSelectedId] = useState<string | null>(null);
-  const [statusFilter, setStatusFilter] = useState<ShipmentStatus[]>([]);
+  const [statusFilter, setStatusFilter] = useState<ShipmentStatus[]>(
+    initial.statuses || []
+  );
 
   const listRef = useRef<HTMLDivElement>(null);
   const anchorRef = useRef<{ id: string; offset: number } | null>(null);
@@ -27,9 +31,9 @@ export function ShipmentsPage() {
     loadMore,
     hasMore,
     updateShipmentOptimistic,
-  } = useShipments();
-
-  console.log({ loading });
+    loadingSource,
+    setLoadingSource,
+  } = useShipments(statusFilter);
 
   const grouped = useMemo(() => groupShipmentsByStatus(shipments), [shipments]);
 
@@ -45,6 +49,11 @@ export function ShipmentsPage() {
   const handleClearFilters = () => {
     setSearch("");
     setStatusFilter([]);
+    setLoadingSource(null);
+  };
+  const handleStatusFilterChange = (next: ShipmentStatus[]) => {
+    setLoadingSource("filter");
+    setStatusFilter(next);
   };
 
   // 🔹 SAVE ANCHOR BEFORE LOAD MORE
@@ -65,6 +74,10 @@ export function ShipmentsPage() {
 
     loadMore();
   };
+
+  useEffect(() => {
+    writeShipmentQuery(search, statusFilter);
+  }, [search, statusFilter]);
 
   // 🔹 RESTORE SCROLL AFTER DATA APPEND
   useLayoutEffect(() => {
@@ -90,15 +103,15 @@ export function ShipmentsPage() {
         searchText={search}
         onSearchTextChange={setSearch}
         statusFilter={statusFilter}
-        onStatusFilterChange={setStatusFilter}
+        onStatusFilterChange={handleStatusFilterChange}
         onClear={handleClearFilters}
-        loading={loading}
+        loading={loadingSource === "search" && loading}
       />
 
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "360px 2fr",
+          gridTemplateColumns: "minmax(240px, 1fr) 2fr",
           gap: 16,
           marginTop: 16,
           alignItems: "start",
@@ -119,8 +132,7 @@ export function ShipmentsPage() {
         >
           <ShipmentsListPanel
             grouped={grouped}
-            loading={loading}
-            isPending={isPending}
+            isPending={isPending || loading}
             error={error}
             onSelect={setSelectedId}
             selectedId={selectedShipment?.id ?? null}
@@ -166,16 +178,17 @@ export function ShipmentsPage() {
             />
           </div>
         ) : (
-          <div
+          <section
             style={{
               padding: 16,
               border: "1px solid #e5e7eb",
               borderRadius: 8,
               background: "#f9fafb",
             }}
+            aria-label="Shipment details placeholder"
           >
-            Please select a shipment to see the details.
-          </div>
+            <p>Please select a shipment to see the details.</p>
+          </section>
         )}
       </div>
     </div>

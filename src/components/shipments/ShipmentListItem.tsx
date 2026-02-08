@@ -17,7 +17,7 @@ export function ShipmentListItem({
   const style = STATUS_STYLES[shipment.status];
 
   return (
-    <div
+    <article
       {...rest}
       style={{
         padding: 12,
@@ -28,8 +28,11 @@ export function ShipmentListItem({
         cursor: "pointer",
       }}
       onClick={() => onSelect(shipment.id)}
+      role="button"
+      tabIndex={0}
+      aria-selected={selected}
     >
-      <div
+      <header
         style={{
           display: "flex",
           justifyContent: "space-between",
@@ -37,10 +40,12 @@ export function ShipmentListItem({
           marginBottom: 6,
         }}
       >
-        <div style={{ fontWeight: 500 }}>{shipment?.client_name}</div>
+        <h2 style={{ fontWeight: 500, fontSize: "1rem", margin: 0 }}>
+          {shipment?.client_name}
+        </h2>
         <span
           style={{
-            fontSize: 11,
+            fontSize: "0.75rem",
             padding: "2px 8px",
             borderRadius: 12,
             border: `1px solid ${style.border}`,
@@ -51,12 +56,12 @@ export function ShipmentListItem({
         >
           {STATUS_OPTIONS.find((opt) => opt.value === shipment?.status)?.label}
         </span>
-      </div>
+      </header>
 
-      <div style={{ fontSize: 12, color: "#666" }}>
+      <p style={{ fontSize: "0.875rem", color: "#666", margin: 0 }}>
         {shipment.container_label} ·{" "}
         {new Date(shipment.arrival_date).toLocaleDateString()}
-      </div>
-    </div>
+      </p>
+    </article>
   );
 }

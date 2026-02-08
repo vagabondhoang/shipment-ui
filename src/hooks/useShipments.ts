@@ -6,6 +6,9 @@ import { useDebounce } from "./useDebounce";
 import { ensureMinDelay } from "@/utils/ensureMinDelay";
 import { MIN_LOADING_TIME, PAGE_SIZE } from "@/constants/shipmentStatus";
 
+import { readShipmentQuery } from "@/utils/query";
+
+
 
 interface UseShipmentsResult {
   shipments: Shipment[];
@@ -22,23 +25,34 @@ interface UseShipmentsResult {
   updateShipmentOptimistic: (id: string, status: ShipmentStatus) => void;
   refetchShipments: () => void;
 
+  loadingSource?: "search" | "filter" | null;
+  setLoadingSource: (source: "search" | "filter" | null) => void;
+
 }
 
-export function useShipments(): UseShipmentsResult {
-  const [search, setSearchRaw] = useState("");
+export function useShipments(statusFilter: ShipmentStatus[]): UseShipmentsResult {
+  const initial = readShipmentQuery();
+
+  const [search, setSearchRaw] = useState(initial.q || "");
   const [shipments, setShipments] = useState<Shipment[]>([]);
   const [isPending, startTransition] = useTransition();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
+  const [loadingSource, setLoadingSource] = useState<
+    "search" | "filter" | null
+  >(null);
 
   // Debounce search input
   const debouncedSearch = useDebounce(search, 400);
 
   const setSearch = (value: string) => {
     setSearchRaw(value);
-    setPage(1);          
+    setPage(1);  
+    if(loadingSource !== 'search') {
+      setLoadingSource('search');
+    }
   };
 
   // Fetch shipments
@@ -55,7 +69,7 @@ export function useShipments(): UseShipmentsResult {
         page,
         perPage: PAGE_SIZE,
         q: debouncedSearch || undefined,
-        statuses: undefined,
+        statuses: statusFilter.length ? statusFilter : undefined,
       });
 
       //Because mock APIs respond instantly, I added a minimum loading duration to avoid make loading states perceptible.
@@ -78,7 +92,7 @@ export function useShipments(): UseShipmentsResult {
   return () => {
     cancelled = true;
   };
-}, [page, debouncedSearch]);
+}, [page, debouncedSearch, statusFilter]);
 
 const updateShipmentOptimistic = useCallback(
     (id: string, status: ShipmentStatus) => {
@@ -116,6 +130,8 @@ const updateShipmentOptimistic = useCallback(
 
     search,
     setSearch,
+    loadingSource,
+    setLoadingSource,
 
     loadMore,
     hasMore,

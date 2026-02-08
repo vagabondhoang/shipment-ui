@@ -1,0 +1,16 @@
+.shipments-toolbar {
+    display: grid;
+    grid-template-columns: minmax(240px, 1fr) 2fr;
+    gap: 16px;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #e5e7eb;
+    background: #fff;
+}
+
+/* Responsive: toolbar xuống dòng khi hẹp */
+@media (max-width: 768px) {
+    .shipments-toolbar {
+        grid-template-columns: 1fr;
+    }
+}

@@ -15,21 +15,26 @@ function Spinner() {
         borderRadius: "50%",
         animation: "spin 0.8s linear infinite",
       }}
+      role="status"
+      aria-label="Loading"
     />
   );
 }
 
 export function ShipmentSearch({ value, onChange, loading }: Props) {
   return (
-    <div
+    <form
       style={{
         position: "relative",
-        width: "360px",
-        maxWidth: "100%",
-        flexShrink: 0,
       }}
+      role="search"
+      onSubmit={(e) => e.preventDefault()} // Prevent form submission
     >
+      <label htmlFor="shipment-search" style={{ display: "none" }}>
+        Search Shipments
+      </label>
       <input
+        id="shipment-search"
         type="text"
         placeholder="Search by client or container label..."
         value={value}
@@ -43,6 +48,7 @@ export function ShipmentSearch({ value, onChange, loading }: Props) {
           color: "#1f2937",
           outline: "none",
         }}
+        aria-busy={loading || undefined}
       />
 
       {/* RIGHT ICON */}
@@ -65,6 +71,7 @@ export function ShipmentSearch({ value, onChange, loading }: Props) {
           <Spinner />
         ) : value ? (
           <button
+            type="button"
             onClick={() => onChange("")}
             aria-label="Clear search"
             style={{
@@ -78,6 +85,6 @@ export function ShipmentSearch({ value, onChange, loading }: Props) {
           </button>
         ) : null}
       </div>
-    </div>
+    </form>
   );
 }

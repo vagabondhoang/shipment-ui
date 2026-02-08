@@ -3,6 +3,8 @@ import type { ShipmentStatus } from "@/types/shipment";
 import { ShipmentStatusFilter } from "./ShipmentStatusFilter";
 import { ShipmentSearch } from "./ShipmentSearch";
 
+import "./shipment.css";
+
 interface ShipmentsToolbarProps {
   searchText?: string;
   onSearchTextChange: (value: string) => void;
@@ -23,17 +25,7 @@ export const ShipmentsToolbar: React.FC<ShipmentsToolbarProps> = ({
   loading,
 }) => {
   return (
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "360px 2fr",
-        alignItems: "center",
-        gap: 16,
-        padding: "12px 0",
-        borderBottom: "1px solid #e5e7eb",
-        background: "#fff",
-      }}
-    >
+    <div className="shipments-toolbar">
       {/* Search */}
       <div>
         <ShipmentSearch
@@ -44,7 +36,15 @@ export const ShipmentsToolbar: React.FC<ShipmentsToolbarProps> = ({
       </div>
 
       {/* Status filter */}
-      <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: 12,
+          flexWrap: "wrap",
+          justifyContent: "flex-end",
+        }}
+      >
         <ShipmentStatusFilter
           value={statusFilter}
           onChange={onStatusFilterChange}
