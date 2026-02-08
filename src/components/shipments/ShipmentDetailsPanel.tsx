@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useOptimistic, useTransition } from "react";
 import type { ShipmentStatus } from "@/types/shipment";
 import { STATUS_OPTIONS } from "@/constants/shipmentStatus";
-
+import type { Shipment } from "@/types/shipment";
+import { updateShipmentStatus } from "@/api/shipments.api";
 import { ConfirmDialog } from "../common/ConfirmDialog";
 
 function DetailRow({
@@ -33,17 +34,60 @@ function DetailRow({
   );
 }
 
-export function ShipmentDetailsPanel() {
-  const [status, setStatus] = useState<ShipmentStatus>("OPEN");
+export function ShipmentDetailsPanel({
+  shipment,
+  onOptimisticUpdate,
+  onSelect,
+}: {
+  shipment: Shipment;
+  onOptimisticUpdate: (id: string, status: ShipmentStatus) => void;
+  onSelect: (id: string) => void;
+}) {
+  const status = shipment.status;
+  const [isPending, startTransition] = useTransition();
+  const [optimisticStatus, setOptimisticStatus] = useOptimistic<ShipmentStatus>(
+    shipment.status
+  );
   const [pendingStatus, setPendingStatus] = useState<ShipmentStatus | null>(
     null
   );
 
   const [openConfirm, setOpenConfirm] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   function handleStatusChange(e: React.ChangeEvent<HTMLSelectElement>) {
     setPendingStatus(e.target.value as ShipmentStatus);
     setOpenConfirm(true);
+    onSelect(shipment.id);
+  }
+
+  function confirmUpdate() {
+    if (!pendingStatus) return;
+
+    const next = pendingStatus!;
+    setIsSubmitting(true);
+
+    startTransition(() => {
+      setOptimisticStatus(next);
+      onOptimisticUpdate(shipment.id, next);
+    });
+
+    (async () => {
+      try {
+        await updateShipmentStatus(shipment.id, next);
+        setOpenConfirm(false);
+        // toast success could be added here
+      } catch {
+        // rollback
+        startTransition(() => {
+          setOptimisticStatus(shipment.status);
+          onOptimisticUpdate(shipment.id, shipment.status);
+        });
+        // toast error could be added here
+      } finally {
+        setIsSubmitting(false);
+      }
+    })();
   }
 
   return (
@@ -58,9 +102,11 @@ export function ShipmentDetailsPanel() {
       >
         <h2 style={{ marginBottom: 16 }}>Container Details</h2>
 
-        <DetailRow label="Client">CLIENT NAME</DetailRow>
+        <DetailRow label="Client">{shipment?.client_name}</DetailRow>
 
-        <DetailRow label="Container Label">LAX-581-XXXXX</DetailRow>
+        <DetailRow label="Container Label">
+          {shipment?.container_label}
+        </DetailRow>
 
         <DetailRow
           label="Status"
@@ -95,18 +141,23 @@ export function ShipmentDetailsPanel() {
           </select>
         </DetailRow>
 
-        <DetailRow label="Arrival Date">2025-05-28</DetailRow>
-        <DetailRow label="Delivery By">2025-05-30</DetailRow>
-        <DetailRow label="Warehouse">581</DetailRow>
+        <DetailRow label="Arrival Date">
+          {new Date(shipment.arrival_date).toLocaleDateString()}
+        </DetailRow>
+        <DetailRow label="Delivery By">
+          {new Date(shipment.delivery_by_date).toLocaleDateString()}
+        </DetailRow>
+        <DetailRow label="Warehouse">{shipment.warehouse_id}</DetailRow>
       </section>
 
       {/* Confirm dialog */}
       <ConfirmDialog
         open={openConfirm}
+        confirmLoading={isSubmitting || isPending}
         title="Confirm status update"
         message={
           <>
-            Change status from <strong>{status}</strong> to{" "}
+            Change status from <strong>{optimisticStatus}</strong> to{" "}
             <strong>{pendingStatus}</strong>?
           </>
         }
@@ -114,11 +165,7 @@ export function ShipmentDetailsPanel() {
           setOpenConfirm(false);
           setPendingStatus(null);
         }}
-        onConfirm={() => {
-          // TODO: call update API
-          setStatus(pendingStatus!);
-          setOpenConfirm(false);
-        }}
+        onConfirm={confirmUpdate}
       />
     </>
   );

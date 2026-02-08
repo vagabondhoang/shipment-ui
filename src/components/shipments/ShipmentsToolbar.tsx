@@ -1,5 +1,7 @@
-import { ShipmentStatusFilter } from "./ShipmentStatusFilter";
 import type { ShipmentStatus } from "@/types/shipment";
+
+import { ShipmentStatusFilter } from "./ShipmentStatusFilter";
+import { ShipmentSearch } from "./ShipmentSearch";
 
 interface ShipmentsToolbarProps {
   searchText?: string;
@@ -9,6 +11,7 @@ interface ShipmentsToolbarProps {
   onStatusFilterChange: (next: ShipmentStatus[]) => void;
 
   onClear: () => void;
+  loading?: boolean;
 }
 
 export const ShipmentsToolbar: React.FC<ShipmentsToolbarProps> = ({
@@ -17,11 +20,13 @@ export const ShipmentsToolbar: React.FC<ShipmentsToolbarProps> = ({
   statusFilter,
   onStatusFilterChange,
   onClear,
+  loading,
 }) => {
   return (
     <div
       style={{
-        display: "flex",
+        display: "grid",
+        gridTemplateColumns: "360px 2fr",
         alignItems: "center",
         gap: 16,
         padding: "12px 0",
@@ -30,48 +35,42 @@ export const ShipmentsToolbar: React.FC<ShipmentsToolbarProps> = ({
       }}
     >
       {/* Search */}
-      <input
-        type="text"
-        placeholder="Search shipments…"
-        value={searchText}
-        onChange={(e) => onSearchTextChange(e.target.value)}
-        style={{
-          width: "50%",
-          maxWidth: "100%",
-          padding: "8px 12px",
-          borderRadius: 8,
-          border: "1px solid #d1d5db",
-          fontSize: 14,
-          color: "#1f2937",
-        }}
-      />
+      <div>
+        <ShipmentSearch
+          value={searchText}
+          onChange={onSearchTextChange}
+          loading={loading}
+        />
+      </div>
 
       {/* Status filter */}
-      <ShipmentStatusFilter
-        value={statusFilter}
-        onChange={onStatusFilterChange}
-      />
+      <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+        <ShipmentStatusFilter
+          value={statusFilter}
+          onChange={onStatusFilterChange}
+        />
 
-      {/* Clear */}
-      <button
-        onClick={onClear}
-        style={{
-          height: 32,
-          padding: "0 16px",
-          borderRadius: 8,
-          border: "1px solid #fca5a5",
-          background: "#fff",
-          color: "#b91c1c",
-          fontWeight: 600,
-          fontSize: 13,
-          cursor: "pointer",
-          display: "inline-flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        CLEAR
-      </button>
+        {/* Clear */}
+        <button
+          onClick={onClear}
+          style={{
+            height: 32,
+            padding: "0 16px",
+            borderRadius: 8,
+            border: "1px solid #fca5a5",
+            background: "#fff",
+            color: "#b91c1c",
+            fontWeight: 600,
+            fontSize: 13,
+            cursor: "pointer",
+            display: "inline-flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          CLEAR
+        </button>
+      </div>
     </div>
   );
 };

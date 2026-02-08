@@ -39,3 +39,7 @@ export const STATUS_OPTIONS: ShipmentStatusOption[] = [
   { label: "In Transit", value: "IN_TRANSIT" },
   { label: "Delivered", value: "DELIVERED" },
 ];
+
+export const PAGE_SIZE = 20;
+
+export const MIN_LOADING_TIME = 500;

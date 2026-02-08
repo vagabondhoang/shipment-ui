@@ -1,16 +1,24 @@
-import type { ShipmentStatus } from "@/types/shipment";
 import { STATUS_STYLES, STATUS_OPTIONS } from "@/constants/shipmentStatus";
 
-type Props = {
-  selected?: boolean;
-};
+import type { Shipment } from "@/types/shipment";
 
-export function ShipmentListItem({ selected }: Props) {
-  const status = "IN_TRANSIT" as ShipmentStatus;
-  const style = STATUS_STYLES[status];
+type Props = {
+  shipment: Shipment;
+  selected?: boolean;
+  onSelect: (id: string) => void;
+} & React.HTMLAttributes<HTMLDivElement>;
+
+export function ShipmentListItem({
+  shipment,
+  selected,
+  onSelect,
+  ...rest
+}: Props) {
+  const style = STATUS_STYLES[shipment.status];
 
   return (
     <div
+      {...rest}
       style={{
         padding: 12,
         marginBottom: 8,
@@ -19,6 +27,7 @@ export function ShipmentListItem({ selected }: Props) {
         background: selected ? "#f0f6ff" : "#fff",
         cursor: "pointer",
       }}
+      onClick={() => onSelect(shipment.id)}
     >
       <div
         style={{
@@ -28,7 +37,7 @@ export function ShipmentListItem({ selected }: Props) {
           marginBottom: 6,
         }}
       >
-        <div style={{ fontWeight: 600, fontSize: 14 }}>CLIENT NAME</div>
+        <div style={{ fontWeight: 500 }}>{shipment?.client_name}</div>
         <span
           style={{
             fontSize: 11,
@@ -40,12 +49,13 @@ export function ShipmentListItem({ selected }: Props) {
             fontWeight: 500,
           }}
         >
-          {STATUS_OPTIONS.find((opt) => opt.value === status)?.label}
+          {STATUS_OPTIONS.find((opt) => opt.value === shipment?.status)?.label}
         </span>
       </div>
 
       <div style={{ fontSize: 12, color: "#666" }}>
-        CONTAINER LABEL · ARRIVAL DATE
+        {shipment.container_label} ·{" "}
+        {new Date(shipment.arrival_date).toLocaleDateString()}
       </div>
     </div>
   );

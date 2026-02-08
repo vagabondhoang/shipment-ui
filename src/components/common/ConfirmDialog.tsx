@@ -8,6 +8,7 @@ interface ConfirmDialogProps {
   message: React.ReactNode;
   onConfirm: () => void;
   onCancel: () => void;
+  confirmLoading?: boolean;
 }
 
 export function ConfirmDialog({
@@ -16,6 +17,7 @@ export function ConfirmDialog({
   message,
   onConfirm,
   onCancel,
+  confirmLoading = false,
 }: ConfirmDialogProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
@@ -39,8 +41,12 @@ export function ConfirmDialog({
 
       <div className="actions">
         <button onClick={onCancel}>Cancel</button>
-        <button onClick={onConfirm} className="primary">
-          Confirm
+        <button
+          onClick={onConfirm}
+          className="primary"
+          disabled={confirmLoading}
+        >
+          {confirmLoading ? "Updating..." : "Confirm"}
         </button>
       </div>
     </dialog>
