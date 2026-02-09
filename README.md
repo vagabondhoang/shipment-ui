@@ -71,7 +71,28 @@ src/
 └── setup.ts
 ````
 
-## Notes
+## Notes & Assumptions
+
+### Responsive Design
+
+This implementation focuses primarily on desktop usage, which aligns with the expected workflow of managing shipment data in a data-heavy interface.
+
+Responsive behavior (mobile / tablet layouts) is not fully covered in this submission.  
+For the best review experience, please view the application on a desktop screen.
+
+### Date & Time Handling
+
+Dates are currently formatted using the native JavaScript `Date` API for simplicity.
+
+In a real production system, date and time handling would require:
+
+- Explicit timezone awareness (e.g. user locale vs. server timezone)
+- A dedicated date library (e.g. `dayjs`, `date-fns`, or `luxon`)
+- Clear contracts from the backend regarding timezone and format
+
+This was intentionally kept minimal to focus on application state, data flow, and UI behavior.
+
+### Loading behavior
 
 - The mock API responds instantly, so a minimum loading delay is intentionally added
   to make loading states more perceptible and closer to real-world behavior.
