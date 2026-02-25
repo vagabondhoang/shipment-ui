@@ -28,9 +28,9 @@ export function ShipmentsPage() {
     loading,
     isPending,
     error,
+    updateShipmentOptimistic,
     loadMore,
     hasMore,
-    updateShipmentOptimistic,
     loadingSource,
     setLoadingSource,
   } = useShipments(statusFilter);
@@ -173,8 +173,9 @@ export function ShipmentsPage() {
           <div style={{ alignSelf: "start" }}>
             <ShipmentDetailsPanel
               shipment={selectedShipment}
-              onOptimisticUpdate={updateShipmentOptimistic}
+              key={selectedShipment.id}
               onSelect={setSelectedId}
+              updateShipmentOptimistic={updateShipmentOptimistic}
             />
           </div>
         ) : (

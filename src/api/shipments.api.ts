@@ -1,6 +1,6 @@
 import type { Shipment, ShipmentStatus } from "@/types/shipment";
 
-const BASE_URL =  import.meta.env.VITE_API_BASE_URL || "http://localhost:3001";
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:3001";
 
 
 export interface FetchShipmentsParams {
@@ -34,16 +34,20 @@ export async function fetchShipments(
   };
 }
 
-export async function updateShipmentStatus(id: string, status: ShipmentStatus): Promise<Shipment> {
+export async function updateShipment(id: string,
+  data: {
+    status?: ShipmentStatus; assignment_id?: string | null; arrival_date?: string; delivery_by_date?: string; lat?: number;
+    lng?: number;
+  }): Promise<Shipment> {
   const res = await fetch(`${BASE_URL}/shipments/${id}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ status }),
+    body: JSON.stringify(data),
   });
   if (!res.ok) {
-    throw new Error('Failed to update shipment status');
+    throw new Error('Failed to update shipment');
   }
   return res.json();
 }

@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import {
   fetchShipments,
-  updateShipmentStatus,
+  updateShipment,
 } from "../shipments.api";
 import type { Shipment } from "@/types/shipment";
 
@@ -84,7 +84,7 @@ describe("fetchShipments", () => {
   });
 });
 
-describe("updateShipmentStatus", () => {
+describe("updateShipment", () => {
   it("calls PATCH API with correct payload", async () => {
     const fetchMock = vi.fn().mockResolvedValue({
       ok: true,
@@ -96,9 +96,9 @@ describe("updateShipmentStatus", () => {
 
     globalThis.fetch = fetchMock as any;
 
-    const result = await updateShipmentStatus(
+    const result = await updateShipment(
       mockShipment.id,
-      "DELIVERED"
+      { status: "DELIVERED" }
     );
 
     expect(fetchMock).toHaveBeenCalledWith(
@@ -121,7 +121,7 @@ describe("updateShipmentStatus", () => {
     }) as any;
 
     await expect(
-      updateShipmentStatus("SHP-001", "IN_TRANSIT")
-    ).rejects.toThrow("Failed to update shipment status");
+      updateShipment("SHP-001", { status: "IN_TRANSIT" })
+    ).rejects.toThrow("Failed to update shipment");
   });
 });

@@ -22,3 +22,8 @@ export function groupShipmentsByStatus(shipments: Shipment[]) {
     items: map[status],
   }));
 }
+
+export function toDateInputValue(date: string | Date) {
+  const d = new Date(date);
+  return d.toISOString().slice(0, 10);
+}

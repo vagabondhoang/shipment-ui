@@ -22,7 +22,7 @@ interface UseShipmentsResult {
   loadMore: () => void;
   hasMore: boolean;
 
-  updateShipmentOptimistic: (id: string, status: ShipmentStatus) => void;
+  updateShipmentOptimistic: (id: string, data: Partial<Shipment>) => void;
   refetchShipments: () => void;
 
   loadingSource?: "search" | "filter" | null;
@@ -95,10 +95,10 @@ export function useShipments(statusFilter: ShipmentStatus[]): UseShipmentsResult
 }, [page, debouncedSearch, statusFilter]);
 
 const updateShipmentOptimistic = useCallback(
-    (id: string, status: ShipmentStatus) => {
+    (id: string, data: Partial<Shipment>) => {
       setShipments((prev) =>
         prev.map((s) =>
-          s.id === id ? { ...s, status } : s
+          s.id === id ? { ...s, ...data } : s
         )
       );
     },
