@@ -1,12 +1,15 @@
 import { useState, useEffect, useRef } from "react";
+import toast from "react-hot-toast";
+
 import type { ShipmentStatus } from "@/types/shipment";
 import { STATUS_OPTIONS } from "@/constants/shipmentStatus";
 import type { Shipment } from "@/types/shipment";
-import { updateShipment } from "@/api/shipments.api";
+import { updateShipment, deleteShipment } from "@/api/shipments.api";
 import { ShipmentMap } from "./ShipmentMap";
 import { fetchAssignments } from "@/api/assignments.api";
 import type { Assignment } from "@/types/assignment";
 import { toDateInputValue } from "@/utils/shipment";
+import { ConfirmDialog } from "../common/ConfirmDialog";
 
 function DetailRow({
   label,
@@ -83,12 +86,15 @@ export function ShipmentDetailsPanel({
   shipment,
   onSelect,
   updateShipmentOptimistic,
+  deleteShipmentOptimistic,
 }: {
   shipment: Shipment;
   onSelect: (id: string) => void;
   updateShipmentOptimistic: (id: string, data: Partial<Shipment>) => void;
+  deleteShipmentOptimistic?: (id: string) => void;
 }) {
   const [assignments, setAssignments] = useState<Assignment[]>([]);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
   const initialValuesRef = useRef(buildInitialValues(shipment));
 
@@ -139,6 +145,8 @@ export function ShipmentDetailsPanel({
 
       await updateShipment(shipment.id, payload);
 
+      toast.success("Shipment updated successfully");
+
       const next = {
         ...formValues,
         assignment_id: payload.assignment_id ?? "",
@@ -152,6 +160,7 @@ export function ShipmentDetailsPanel({
       setIsDirty(false);
     } catch (error) {
       console.error("Failed to update shipment:", error);
+      toast.error("Failed to update shipment");
     } finally {
       setIsSubmitting(false);
     }
@@ -168,6 +177,17 @@ export function ShipmentDetailsPanel({
 
     onSelect(shipment.id);
   }, [shipment.id, onSelect]);
+
+  const handleDelete = async () => {
+    try {
+      await deleteShipment(shipment.id);
+      toast.success("Shipment deleted successfully");
+      setShowDeleteConfirm(false);
+      deleteShipmentOptimistic?.(shipment.id);
+    } catch (error) {
+      toast.error(`Failed to delete shipment ${shipment.id}: ${error}`);
+    }
+  };
 
   return (
     <>
@@ -196,6 +216,21 @@ export function ShipmentDetailsPanel({
             }}
           >
             <h2 style={{ fontSize: 20, margin: 0 }}>Shipment Management</h2>
+            {!isDirty && (
+              <button
+                type="button"
+                onClick={() => setShowDeleteConfirm(true)}
+                style={{
+                  background: "transparent",
+                  color: "#dc2626",
+                  border: "none",
+                  fontSize: 14,
+                  cursor: "pointer",
+                }}
+              >
+                🗑 Delete shipment
+              </button>
+            )}
             {isDirty && (
               <div style={{ display: "flex", gap: 8 }}>
                 <button
@@ -241,7 +276,7 @@ export function ShipmentDetailsPanel({
 
             <DetailRow label="Container Label">
               <input
-                name="label"
+                name="container_label"
                 defaultValue={shipment.container_label}
                 readOnly
                 style={readOnlyInputStyle}
@@ -366,6 +401,18 @@ export function ShipmentDetailsPanel({
           )}
         </div>
       </section>
+      <ConfirmDialog
+        open={showDeleteConfirm}
+        title="Delete shipment?"
+        onCancel={() => setShowDeleteConfirm(false)}
+        onConfirm={handleDelete}
+      >
+        <>
+          This action <strong>cannot be undone</strong>.
+          <br />
+          The shipment and all related data will be permanently removed.
+        </>
+      </ConfirmDialog>
     </>
   );
 }

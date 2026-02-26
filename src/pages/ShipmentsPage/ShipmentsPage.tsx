@@ -10,6 +10,8 @@ import type { ShipmentStatus } from "@/types/shipment";
 import { useShipments } from "@/hooks/useShipments";
 import { groupShipmentsByStatus } from "@/utils/shipment";
 import { readShipmentQuery, writeShipmentQuery } from "@/utils/query";
+import { ConfirmDialog } from "@/components/common/ConfirmDialog";
+import { CreateShipmentForm } from "@/components/shipments/CreateShipmentForm";
 
 export function ShipmentsPage() {
   const initial = readShipmentQuery();
@@ -17,6 +19,8 @@ export function ShipmentsPage() {
   const [statusFilter, setStatusFilter] = useState<ShipmentStatus[]>(
     initial.statuses || []
   );
+
+  const [openModal, setOpenModal] = useState(false);
 
   const listRef = useRef<HTMLDivElement>(null);
   const anchorRef = useRef<{ id: string; offset: number } | null>(null);
@@ -29,6 +33,8 @@ export function ShipmentsPage() {
     isPending,
     error,
     updateShipmentOptimistic,
+    deleteShipmentOptimistic,
+    addShipmentOptimistic,
     loadMore,
     hasMore,
     loadingSource,
@@ -107,7 +113,20 @@ export function ShipmentsPage() {
         onClear={handleClearFilters}
         loading={loadingSource === "search" && loading}
       />
-
+      <button
+        style={{
+          marginTop: 16,
+          border: "1px solid #1d4ed8",
+          color: "#1d4ed8",
+          background: "transparent",
+          padding: "8px 12px",
+          borderRadius: 4,
+          cursor: "pointer",
+        }}
+        onClick={() => setOpenModal(true)}
+      >
+        Create Shipment
+      </button>
       <div
         style={{
           display: "grid",
@@ -176,6 +195,7 @@ export function ShipmentsPage() {
               key={selectedShipment.id}
               onSelect={setSelectedId}
               updateShipmentOptimistic={updateShipmentOptimistic}
+              deleteShipmentOptimistic={deleteShipmentOptimistic}
             />
           </div>
         ) : (
@@ -192,6 +212,21 @@ export function ShipmentsPage() {
           </section>
         )}
       </div>
+      <ConfirmDialog
+        open={openModal}
+        title="Create Shipment"
+        onCancel={() => setOpenModal(false)}
+        submitFormId="create-shipment-form"
+      >
+        <CreateShipmentForm
+          onSuccess={(shipment) => {
+            setOpenModal(false);
+            if (shipment) {
+              addShipmentOptimistic(shipment);
+            }
+          }}
+        />
+      </ConfirmDialog>
     </div>
   );
 }

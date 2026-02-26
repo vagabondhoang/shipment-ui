@@ -51,3 +51,29 @@ export async function updateShipment(id: string,
   }
   return res.json();
 }
+
+export async function deleteShipment(id: string): Promise<void> {
+  const res = await fetch(`${BASE_URL}/shipments/${id}`, {
+    method: 'DELETE',
+  });
+  if (!res.ok) {
+    throw new Error('Failed to delete shipment');
+  }
+
+  return;
+  
+}
+
+export async function createShipment(data: Partial<Shipment>): Promise<Shipment> {
+  const res = await fetch(`${BASE_URL}/shipments`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  });
+  if (!res.ok) {
+    throw new Error('Failed to create shipment');
+  }
+  return res.json();
+}

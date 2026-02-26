@@ -5,19 +5,21 @@ import "./ConfirmDialog.css";
 interface ConfirmDialogProps {
   open: boolean;
   title: string;
-  message: React.ReactNode;
-  onConfirm: () => void;
+  children: React.ReactNode;
+  onConfirm?: () => void;
   onCancel: () => void;
   confirmLoading?: boolean;
+  submitFormId?: string;
 }
 
 export function ConfirmDialog({
   open,
   title,
-  message,
+  children,
   onConfirm,
   onCancel,
   confirmLoading = false,
+  submitFormId,
 }: ConfirmDialogProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
@@ -37,17 +39,30 @@ export function ConfirmDialog({
   return (
     <dialog ref={dialogRef} onCancel={onCancel} className="confirm-dialog">
       <h3>{title}</h3>
-      <p>{message}</p>
+      <div className="dialog-body">{children}</div>
 
       <div className="actions">
-        <button onClick={onCancel}>Cancel</button>
-        <button
-          onClick={onConfirm}
-          className="primary"
-          disabled={confirmLoading}
-        >
-          {confirmLoading ? "Updating..." : "Confirm"}
+        <button type="button" onClick={onCancel}>
+          Cancel
         </button>
+        {submitFormId ? (
+          <button
+            type="submit"
+            form={submitFormId}
+            className="primary"
+            disabled={confirmLoading}
+          >
+            {confirmLoading ? "Creating..." : "Create"}
+          </button>
+        ) : (
+          <button
+            onClick={onConfirm}
+            className="primary"
+            disabled={confirmLoading}
+          >
+            {confirmLoading ? "Updating..." : "Confirm"}
+          </button>
+        )}
       </div>
     </dialog>
   );

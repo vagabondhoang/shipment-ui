@@ -23,6 +23,8 @@ interface UseShipmentsResult {
   hasMore: boolean;
 
   updateShipmentOptimistic: (id: string, data: Partial<Shipment>) => void;
+  deleteShipmentOptimistic: (id: string) => void;
+  addShipmentOptimistic: (shipment: Shipment) => void;
   refetchShipments: () => void;
 
   loadingSource?: "search" | "filter" | null;
@@ -105,6 +107,14 @@ const updateShipmentOptimistic = useCallback(
     []
   );
 
+  const deleteShipmentOptimistic = useCallback((id: string) => {
+    setShipments((prev) => prev.filter((s) => s.id !== id));
+  }, []);
+
+  const addShipmentOptimistic = useCallback((shipment: Shipment) => {
+    setShipments((prev) => [shipment, ...prev]);
+  }, []);
+
   const refetchShipments = useCallback(() => {
     startTransition(() => {
       setPage(1);
@@ -138,5 +148,7 @@ const updateShipmentOptimistic = useCallback(
 
     updateShipmentOptimistic,
     refetchShipments,
+    deleteShipmentOptimistic,
+    addShipmentOptimistic,
   };
 }
