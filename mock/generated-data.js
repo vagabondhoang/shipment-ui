@@ -19,18 +19,31 @@ const maxLng = -96.5;
 const shipments = [];
 const assignments = [];
 
+function syncAssignmentStatus(shipments) {
+  if (shipments.length === 0) return "OPEN";
+
+  const allDelivered = shipments.every((s) => s.status === "DELIVERED");
+  if (allDelivered) return "DELIVERED";
+
+  const allOpen = shipments.every((s) => s.status === "OPEN");
+  if (allOpen) return "OPEN";
+
+  return "IN_TRANSIT";
+}
+
 for (let j = 1; j <= 15; j++) {
   assignments.push({
     id: `as_${String(j).padStart(3, "0")}`,
     label: `TX-${120 + j}`,
-    status: j <= 3 ? "OPEN" : statusList[j % statusList.length],
+    status: "OPEN",
     clients: [],
-    shipment_count: 1,
+    shipment_count: 0,
   });
 }
 for (let i = 1; i <= 100; i++) {
   const arrival = new Date(baseDate);
   arrival.setDate(arrival.getDate() - Math.floor(Math.random() * 10));
+
   const eta = new Date(arrival);
   eta.setHours(eta.getHours() + Math.floor(Math.random() * 48));
 
@@ -60,12 +73,10 @@ for (let i = 1; i <= 100; i++) {
 
 assignments.forEach((as) => {
   const relatedShipments = shipments.filter((s) => s.assignment_id === as.id);
+
   as.shipment_count = relatedShipments.length;
   as.clients = [...new Set(relatedShipments.map((s) => s.client_name))];
-
-  if (as.shipment_count > 0) {
-    as.status = "IN_TRANSIT";
-  }
+  as.status = syncAssignmentStatus(relatedShipments);
 });
 
 const result = {

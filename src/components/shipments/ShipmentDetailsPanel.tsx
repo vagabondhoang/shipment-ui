@@ -4,12 +4,19 @@ import toast from "react-hot-toast";
 import type { ShipmentStatus } from "@/types/shipment";
 import { STATUS_OPTIONS } from "@/constants/shipmentStatus";
 import type { Shipment } from "@/types/shipment";
-import { updateShipment, deleteShipment } from "@/api/shipments.api";
+import {
+  updateShipment,
+  deleteShipment,
+  fetchShipmentsByAssignment,
+} from "@/api/shipments.api";
 import { ShipmentMap } from "./ShipmentMap";
 import { fetchAssignments } from "@/api/assignments.api";
 import type { Assignment } from "@/types/assignment";
 import { toDateInputValue } from "@/utils/shipment";
 import { ConfirmDialog } from "../common/ConfirmDialog";
+
+import { syncAssignmentStatus } from "@/utils/shipment";
+import { updateAssignment } from "@/api/assignments.api";
 
 function DetailRow({
   label,
@@ -82,6 +89,18 @@ function buildInitialValues(shipment: Shipment) {
   };
 }
 
+async function recalculateAssignmentStatus(assignmentId: string) {
+  const shipments = await fetchShipmentsByAssignment(assignmentId);
+
+  const nextStatus = syncAssignmentStatus(shipments);
+  const shipmentCount = shipments.length;
+
+  await updateAssignment(assignmentId, {
+    status: nextStatus,
+    shipment_count: shipmentCount,
+  });
+}
+
 export function ShipmentDetailsPanel({
   shipment,
   onSelect,
@@ -129,6 +148,7 @@ export function ShipmentDetailsPanel({
     try {
       setIsSubmitting(true);
       const prevStatus = initialValuesRef.current.status;
+      const prevAssignmentId = initialValuesRef.current.assignment_id;
       const status = formValues.status;
 
       const payload = {
@@ -143,7 +163,7 @@ export function ShipmentDetailsPanel({
         delivery_by_date: new Date(formValues.delivery_by_date).toISOString(),
       };
 
-      await updateShipment(shipment.id, payload);
+      const updated = await updateShipment(shipment.id, payload);
 
       toast.success("Shipment updated successfully");
 
@@ -158,6 +178,29 @@ export function ShipmentDetailsPanel({
       initialValuesRef.current = next;
       setFormValues(next);
       setIsDirty(false);
+
+      const shouldRecalculate =
+        prevAssignmentId !== updated.assignment_id ||
+        prevStatus !== updated.status;
+
+      if (!shouldRecalculate) return;
+
+      /**
+       * Recalculate affected assignments
+       * - old assignment (shipment removed)
+       * - new assignment (shipment added)
+       */
+      const affectedAssignmentIds = new Set<string>();
+      if (prevAssignmentId) {
+        affectedAssignmentIds.add(prevAssignmentId);
+      }
+      if (updated.assignment_id) {
+        affectedAssignmentIds.add(updated.assignment_id);
+      }
+
+      for (const id of affectedAssignmentIds) {
+        await recalculateAssignmentStatus(id);
+      }
     } catch (error) {
       console.error("Failed to update shipment:", error);
       toast.error("Failed to update shipment");
@@ -180,7 +223,12 @@ export function ShipmentDetailsPanel({
 
   const handleDelete = async () => {
     try {
+      const assignmentId = shipment.assignment_id;
       await deleteShipment(shipment.id);
+
+      if (assignmentId) {
+        await recalculateAssignmentStatus(assignmentId);
+      }
       toast.success("Shipment deleted successfully");
       setShowDeleteConfirm(false);
       deleteShipmentOptimistic?.(shipment.id);
@@ -197,7 +245,7 @@ export function ShipmentDetailsPanel({
           borderRadius: 8,
           padding: 16,
           background: "#fff",
-          maxHeight: "calc(100vh - 140px)",
+          maxHeight: "calc(100vh - 180px)",
           overflowY: "auto",
         }}
       >

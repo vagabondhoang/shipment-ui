@@ -5,3 +5,5 @@ export type Assignment = {
     clients: string[];
     shipment_count: number;
 }
+
+export type AssignmentStatus = 'OPEN' | 'IN_TRANSIT' | 'DELIVERED';

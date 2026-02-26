@@ -96,3 +96,25 @@ This was intentionally kept minimal to focus on application state, data flow, an
 
 - The mock API responds instantly, so a minimum loading delay is intentionally added
   to make loading states more perceptible and closer to real-world behavior.
+
+### Assignment Status
+
+- Assignment status is derived from shipment statuses.
+  When a shipment changes assignment, both the previous and the new assignment are recalculated to ensure consistency.
+  In a real system, this logic would be handled transactionally in the backend.
+- We have 3 cases below:
+  Invariant A
+
+Assignment DELIVERED
+→ all shipments must be DELIVERED
+
+Invariant B
+
+Assignment OPEN
+→ all shipments must be OPEN
+
+Invariant C
+
+Assignment IN_TRANSIT
+→ exists at least one shipment IN_TRANSIT or DELIVERED
+→ but not all DELIVERED

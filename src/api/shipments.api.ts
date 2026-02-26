@@ -77,3 +77,17 @@ export async function createShipment(data: Partial<Shipment>): Promise<Shipment>
   }
   return res.json();
 }
+
+export async function fetchShipmentsByAssignment(
+  assignmentId: string
+): Promise<Shipment[]> {
+  const res = await fetch(
+    `${BASE_URL}/shipments?assignment_id=${assignmentId}`
+  );
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch shipments by assignment");
+  }
+
+  return res.json();
+}

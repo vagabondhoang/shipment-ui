@@ -12,212 +12,199 @@
   ],
   "shipments": [
     {
-      "id": "shp_001",
-      "client_name": "Samsung",
-      "container_label": "LAX-581-250521-1",
-      "status": "OPEN",
-      "assignment_id": "as_001",
-      "arrival_date": "2026-02-21T00:00:00.000Z",
-      "delivery_by_date": "2026-02-24T00:00:00.000Z",
-      "eta": "2026-02-21T20:53:26.834Z",
-      "warehouse_id": "581",
-      "lat": 32.6,
-      "lng": -97.4
-    },
-    {
       "id": "shp_002",
       "client_name": "DHL",
       "container_label": "JFK-581-250522-2",
       "status": "DELIVERED",
-      "assignment_id": "as_002",
-      "arrival_date": "2026-02-24T07:53:26.834Z",
-      "delivery_by_date": "2026-02-26T07:53:26.834Z",
-      "eta": "2026-02-24T20:53:26.834Z",
+      "assignment_id": "as_015",
+      "arrival_date": "2026-02-19T08:39:54.144Z",
+      "delivery_by_date": "2026-02-21T08:39:54.144Z",
+      "eta": "2026-02-20T03:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.60993314345705,
-      "lng": -97.14372745017248
+      "lat": 32.7336966162605,
+      "lng": -97.27347778435492
     },
     {
       "id": "shp_003",
       "client_name": "CargoTrans",
       "container_label": "SFO-581-250523-3",
       "status": "OPEN",
-      "assignment_id": null,
+      "assignment_id": "as_001",
       "arrival_date": "2026-02-21T00:00:00.000Z",
       "delivery_by_date": "2026-02-23T00:00:00.000Z",
-      "eta": "2026-02-22T22:53:26.834Z",
+      "eta": "2026-02-21T16:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.80379992701131,
-      "lng": -96.96355178750282
+      "lat": 32.86995290522313,
+      "lng": -96.86046087947962
     },
     {
       "id": "shp_004",
       "client_name": "ShipCo",
       "container_label": "SEA-581-250524-4",
-      "status": "OPEN",
-      "assignment_id": "as_001",
-      "arrival_date": "2026-02-20T00:00:00.000Z",
-      "delivery_by_date": "2026-02-22T00:00:00.000Z",
-      "eta": "2026-02-20T22:53:26.834Z",
+      "status": "IN_TRANSIT",
+      "assignment_id": "as_008",
+      "arrival_date": "2026-02-25T08:39:54.144Z",
+      "delivery_by_date": "2026-02-27T08:39:54.144Z",
+      "eta": "2026-02-26T19:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.81886834019856,
-      "lng": -97.06439876754261
+      "lat": 32.82430321563393,
+      "lng": -97.19878273874133
     },
     {
       "id": "shp_005",
       "client_name": "Logix",
       "container_label": "EWR-581-250525-5",
       "status": "DELIVERED",
-      "assignment_id": "as_008",
-      "arrival_date": "2026-02-21T07:53:26.834Z",
-      "delivery_by_date": "2026-02-23T07:53:26.834Z",
-      "eta": "2026-02-21T11:53:26.834Z",
+      "assignment_id": "as_015",
+      "arrival_date": "2026-02-17T08:39:54.144Z",
+      "delivery_by_date": "2026-02-19T08:39:54.144Z",
+      "eta": "2026-02-19T03:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.711085139977484,
-      "lng": -97.23175360848472
+      "lat": 32.7320917314518,
+      "lng": -97.35513933907126
     },
     {
       "id": "shp_006",
       "client_name": "Oceanic",
       "container_label": "LAX-581-250526-6",
-      "status": "DELIVERED",
+      "status": "OPEN",
       "assignment_id": "as_001",
-      "arrival_date": "2026-02-21T00:00:00.000Z",
-      "delivery_by_date": "2026-02-24T00:00:00.000Z",
-      "eta": "2026-02-24T03:53:26.834Z",
+      "arrival_date": "2026-02-19T00:00:00.000Z",
+      "delivery_by_date": "2026-02-21T00:00:00.000Z",
+      "eta": "2026-02-21T07:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.97954620444928,
-      "lng": -97.11203681923011
+      "lat": 32.940824827202384,
+      "lng": -97.21633487931277
     },
     {
       "id": "shp_007",
       "client_name": "Sony",
       "container_label": "JFK-581-250527-7",
-      "status": "OPEN",
-      "assignment_id": null,
-      "arrival_date": "2026-02-20T00:00:00.000Z",
-      "delivery_by_date": "2026-02-22T00:00:00.000Z",
-      "eta": "2026-02-20T11:53:26.834Z",
+      "status": "IN_TRANSIT",
+      "assignment_id": "as_008",
+      "arrival_date": "2026-02-25T08:39:54.144Z",
+      "delivery_by_date": "2026-02-27T08:39:54.144Z",
+      "eta": "2026-02-25T10:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.90936066446455,
-      "lng": -96.76636976222136
+      "lat": 32.918267942063046,
+      "lng": -97.0473506015383
     },
     {
       "id": "shp_008",
       "client_name": "Samsung",
       "container_label": "SFO-581-250528-8",
       "status": "DELIVERED",
-      "assignment_id": "as_001",
-      "arrival_date": "2026-02-24T07:53:26.834Z",
-      "delivery_by_date": "2026-02-26T07:53:26.834Z",
-      "eta": "2026-02-25T12:53:26.834Z",
+      "assignment_id": "as_011",
+      "arrival_date": "2026-02-22T08:39:54.144Z",
+      "delivery_by_date": "2026-02-24T08:39:54.144Z",
+      "eta": "2026-02-23T17:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.95916778463563,
-      "lng": -97.30132777465597
+      "lat": 32.58650916124188,
+      "lng": -96.56685295655947
     },
     {
       "id": "shp_009",
       "client_name": "DHL",
       "container_label": "SEA-581-250529-9",
-      "status": "DELIVERED",
+      "status": "OPEN",
       "assignment_id": "as_001",
-      "arrival_date": "2026-02-16T00:00:00.000Z",
-      "delivery_by_date": "2026-02-18T00:00:00.000Z",
-      "eta": "2026-02-17T11:53:26.834Z",
+      "arrival_date": "2026-02-25T00:00:00.000Z",
+      "delivery_by_date": "2026-02-27T00:00:00.000Z",
+      "eta": "2026-02-25T14:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.914279563573665,
-      "lng": -97.10826466097502
+      "lat": 32.65514236832153,
+      "lng": -97.20531785266733
     },
     {
       "id": "shp_010",
       "client_name": "CargoTrans",
       "container_label": "EWR-581-250520-10",
-      "status": "OPEN",
-      "assignment_id": null,
-      "arrival_date": "2026-02-22T00:00:00.000Z",
-      "delivery_by_date": "2026-02-24T00:00:00.000Z",
-      "eta": "2026-02-23T21:53:26.834Z",
+      "status": "IN_TRANSIT",
+      "assignment_id": "as_003",
+      "arrival_date": "2026-02-25T08:39:54.144Z",
+      "delivery_by_date": "2026-02-27T08:39:54.144Z",
+      "eta": "2026-02-27T07:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 33.01506388065368,
-      "lng": -97.02203184513412
+      "lat": 32.56166849420762,
+      "lng": -97.39821706585467
     },
     {
       "id": "shp_011",
       "client_name": "ShipCo",
       "container_label": "LAX-581-250521-11",
       "status": "DELIVERED",
-      "assignment_id": "as_011",
-      "arrival_date": "2026-02-24T07:53:26.834Z",
-      "delivery_by_date": "2026-02-26T07:53:26.834Z",
-      "eta": "2026-02-24T12:53:26.834Z",
+      "assignment_id": "as_001",
+      "arrival_date": "2026-02-17T08:39:54.144Z",
+      "delivery_by_date": "2026-02-19T08:39:54.144Z",
+      "eta": "2026-02-17T11:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 33.01111209805794,
-      "lng": -96.87765354803429
+      "lat": 32.99888943433226,
+      "lng": -96.52618800656798
     },
     {
       "id": "shp_012",
       "client_name": "Logix",
       "container_label": "JFK-581-250522-12",
-      "status": "IN_TRANSIT",
-      "assignment_id": "as_001",
-      "arrival_date": "2026-02-20T00:00:00.000Z",
-      "delivery_by_date": "2026-02-22T00:00:00.000Z",
-      "eta": "2026-02-21T02:53:26.834Z",
+      "status": "OPEN",
+      "assignment_id": null,
+      "arrival_date": "2026-02-21T08:39:54.144Z",
+      "delivery_by_date": "2026-02-23T08:39:54.144Z",
+      "eta": "2026-02-22T04:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.80276157402713,
-      "lng": -96.530793464004
+      "lat": 32.56051944425795,
+      "lng": -97.3174261050221
     },
     {
       "id": "shp_013",
       "client_name": "Oceanic",
       "container_label": "SFO-581-250523-13",
       "status": "IN_TRANSIT",
-      "assignment_id": "as_001",
-      "arrival_date": "2026-02-23T00:00:00.000Z",
-      "delivery_by_date": "2026-02-26T00:00:00.000Z",
-      "eta": "2026-02-24T11:53:26.834Z",
+      "assignment_id": "as_007",
+      "arrival_date": "2026-02-19T08:39:54.144Z",
+      "delivery_by_date": "2026-02-21T08:39:54.144Z",
+      "eta": "2026-02-21T05:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.943425680972,
-      "lng": -96.5212288467755
+      "lat": 32.7470338158392,
+      "lng": -97.20605749927161
     },
     {
       "id": "shp_014",
       "client_name": "Sony",
       "container_label": "SEA-581-250524-14",
       "status": "DELIVERED",
-      "assignment_id": "as_006",
-      "arrival_date": "2026-02-22T07:53:26.834Z",
-      "delivery_by_date": "2026-02-24T07:53:26.834Z",
-      "eta": "2026-02-22T11:53:26.834Z",
+      "assignment_id": "as_001",
+      "arrival_date": "2026-02-21T08:39:54.144Z",
+      "delivery_by_date": "2026-02-23T08:39:54.144Z",
+      "eta": "2026-02-21T21:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.816441255942266,
-      "lng": -97.01236935904055
+      "lat": 32.742233501767295,
+      "lng": -96.82733318328032
     },
     {
       "id": "shp_015",
       "client_name": "Samsung",
       "container_label": "EWR-581-250525-15",
-      "status": "IN_TRANSIT",
-      "assignment_id": "as_002",
-      "arrival_date": "2026-02-20T00:00:00.000Z",
-      "delivery_by_date": "2026-02-22T00:00:00.000Z",
-      "eta": "2026-02-21T00:53:26.834Z",
+      "status": "OPEN",
+      "assignment_id": null,
+      "arrival_date": "2026-02-18T08:39:54.144Z",
+      "delivery_by_date": "2026-02-20T08:39:54.144Z",
+      "eta": "2026-02-19T14:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.818814007545384,
-      "lng": -97.22025864206955
+      "lat": 32.92192891866652,
+      "lng": -97.12838896622121
     },
     {
       "id": "shp_016",
       "client_name": "DHL",
       "container_label": "LAX-581-250526-16",
       "status": "IN_TRANSIT",
-      "assignment_id": "as_011",
-      "arrival_date": "2026-02-17T07:53:26.834Z",
-      "delivery_by_date": "2026-02-19T07:53:26.834Z",
-      "eta": "2026-02-17T10:53:26.834Z",
+      "assignment_id": "as_002",
+      "arrival_date": "2026-02-22T08:39:54.144Z",
+      "delivery_by_date": "2026-02-24T08:39:54.144Z",
+      "eta": "2026-02-23T10:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.57040986243415,
-      "lng": -97.29113829532908
+      "lat": 32.62766750772191,
+      "lng": -97.05345018404451
     },
     {
       "id": "shp_017",
@@ -225,12 +212,12 @@
       "container_label": "JFK-581-250527-17",
       "status": "DELIVERED",
       "assignment_id": "as_014",
-      "arrival_date": "2026-02-16T07:53:26.834Z",
-      "delivery_by_date": "2026-02-18T07:53:26.834Z",
-      "eta": "2026-02-18T00:53:26.834Z",
+      "arrival_date": "2026-02-19T08:39:54.144Z",
+      "delivery_by_date": "2026-02-21T08:39:54.144Z",
+      "eta": "2026-02-20T09:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.60184699153236,
-      "lng": -96.74370869751606
+      "lat": 32.87710957178833,
+      "lng": -96.75176407350376
     },
     {
       "id": "shp_018",
@@ -238,38 +225,38 @@
       "container_label": "SFO-581-250528-18",
       "status": "OPEN",
       "assignment_id": null,
-      "arrival_date": "2026-02-16T07:53:26.834Z",
-      "delivery_by_date": "2026-02-18T07:53:26.834Z",
-      "eta": "2026-02-16T16:53:26.834Z",
+      "arrival_date": "2026-02-26T08:39:54.144Z",
+      "delivery_by_date": "2026-02-28T08:39:54.144Z",
+      "eta": "2026-02-27T05:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.64884982533803,
-      "lng": -96.95241404285925
+      "lat": 32.80313174186859,
+      "lng": -96.91706306647043
     },
     {
       "id": "shp_019",
       "client_name": "Logix",
       "container_label": "SEA-581-250529-19",
       "status": "IN_TRANSIT",
-      "assignment_id": "as_004",
-      "arrival_date": "2026-02-17T07:53:26.834Z",
-      "delivery_by_date": "2026-02-19T07:53:26.834Z",
-      "eta": "2026-02-17T16:53:26.834Z",
+      "assignment_id": "as_010",
+      "arrival_date": "2026-02-20T08:39:54.144Z",
+      "delivery_by_date": "2026-02-22T08:39:54.144Z",
+      "eta": "2026-02-22T07:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.99125369637796,
-      "lng": -96.73655708951824
+      "lat": 33.02885743177639,
+      "lng": -96.60993703691287
     },
     {
       "id": "shp_020",
       "client_name": "Oceanic",
       "container_label": "EWR-581-250520-20",
       "status": "DELIVERED",
-      "assignment_id": "as_004",
-      "arrival_date": "2026-02-20T07:53:26.834Z",
-      "delivery_by_date": "2026-02-22T07:53:26.834Z",
-      "eta": "2026-02-20T17:53:26.834Z",
+      "assignment_id": "as_015",
+      "arrival_date": "2026-02-24T08:39:54.144Z",
+      "delivery_by_date": "2026-02-26T08:39:54.144Z",
+      "eta": "2026-02-24T08:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.7029648488468,
-      "lng": -97.3236764096643
+      "lat": 32.714496044188685,
+      "lng": -96.51638450664517
     },
     {
       "id": "shp_021",
@@ -277,38 +264,38 @@
       "container_label": "LAX-581-250521-21",
       "status": "OPEN",
       "assignment_id": null,
-      "arrival_date": "2026-02-20T07:53:26.834Z",
-      "delivery_by_date": "2026-02-22T07:53:26.834Z",
-      "eta": "2026-02-20T15:53:26.834Z",
+      "arrival_date": "2026-02-24T08:39:54.144Z",
+      "delivery_by_date": "2026-02-26T08:39:54.144Z",
+      "eta": "2026-02-24T12:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.70980458761525,
-      "lng": -97.01404245094714
+      "lat": 32.75258451907672,
+      "lng": -97.18243001238638
     },
     {
       "id": "shp_022",
       "client_name": "Samsung",
       "container_label": "JFK-581-250522-22",
       "status": "IN_TRANSIT",
-      "assignment_id": "as_008",
-      "arrival_date": "2026-02-17T07:53:26.834Z",
-      "delivery_by_date": "2026-02-19T07:53:26.834Z",
-      "eta": "2026-02-18T22:53:26.834Z",
+      "assignment_id": "as_009",
+      "arrival_date": "2026-02-19T08:39:54.144Z",
+      "delivery_by_date": "2026-02-21T08:39:54.144Z",
+      "eta": "2026-02-20T18:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.93141884920332,
-      "lng": -97.31415604680113
+      "lat": 32.62981765665937,
+      "lng": -96.69758585191313
     },
     {
       "id": "shp_023",
       "client_name": "DHL",
       "container_label": "SFO-581-250523-23",
       "status": "DELIVERED",
-      "assignment_id": "as_008",
-      "arrival_date": "2026-02-21T07:53:26.834Z",
-      "delivery_by_date": "2026-02-23T07:53:26.834Z",
-      "eta": "2026-02-22T04:53:26.834Z",
+      "assignment_id": "as_011",
+      "arrival_date": "2026-02-25T08:39:54.144Z",
+      "delivery_by_date": "2026-02-27T08:39:54.144Z",
+      "eta": "2026-02-26T02:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.792282597143966,
-      "lng": -96.8931725128453
+      "lat": 32.6761745434485,
+      "lng": -97.15600934827565
     },
     {
       "id": "shp_024",
@@ -316,38 +303,38 @@
       "container_label": "SEA-581-250524-24",
       "status": "OPEN",
       "assignment_id": null,
-      "arrival_date": "2026-02-19T07:53:26.834Z",
-      "delivery_by_date": "2026-02-21T07:53:26.834Z",
-      "eta": "2026-02-20T22:53:26.834Z",
+      "arrival_date": "2026-02-23T08:39:54.144Z",
+      "delivery_by_date": "2026-02-25T08:39:54.144Z",
+      "eta": "2026-02-24T20:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.81551847582101,
-      "lng": -96.97894423879377
+      "lat": 32.82266568964522,
+      "lng": -97.09902577377687
     },
     {
       "id": "shp_025",
       "client_name": "ShipCo",
       "container_label": "EWR-581-250525-25",
       "status": "IN_TRANSIT",
-      "assignment_id": "as_012",
-      "arrival_date": "2026-02-24T07:53:26.834Z",
-      "delivery_by_date": "2026-02-26T07:53:26.834Z",
-      "eta": "2026-02-25T22:53:26.834Z",
+      "assignment_id": "as_015",
+      "arrival_date": "2026-02-25T08:39:54.144Z",
+      "delivery_by_date": "2026-02-27T08:39:54.144Z",
+      "eta": "2026-02-26T12:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.70273769937218,
-      "lng": -97.06781744574818
+      "lat": 33.01718940762287,
+      "lng": -97.20123831067396
     },
     {
       "id": "shp_026",
       "client_name": "Logix",
       "container_label": "LAX-581-250526-26",
       "status": "DELIVERED",
-      "assignment_id": "as_014",
-      "arrival_date": "2026-02-21T07:53:26.834Z",
-      "delivery_by_date": "2026-02-23T07:53:26.834Z",
-      "eta": "2026-02-21T22:53:26.834Z",
+      "assignment_id": "as_003",
+      "arrival_date": "2026-02-17T08:39:54.144Z",
+      "delivery_by_date": "2026-02-19T08:39:54.144Z",
+      "eta": "2026-02-18T22:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.9109581602482,
-      "lng": -96.8981476581864
+      "lat": 32.7955566289752,
+      "lng": -97.13203679447214
     },
     {
       "id": "shp_027",
@@ -355,38 +342,38 @@
       "container_label": "JFK-581-250527-27",
       "status": "OPEN",
       "assignment_id": null,
-      "arrival_date": "2026-02-21T07:53:26.834Z",
-      "delivery_by_date": "2026-02-23T07:53:26.834Z",
-      "eta": "2026-02-21T08:53:26.834Z",
+      "arrival_date": "2026-02-26T08:39:54.144Z",
+      "delivery_by_date": "2026-02-28T08:39:54.144Z",
+      "eta": "2026-02-27T09:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.75094592577889,
-      "lng": -96.86857360964316
+      "lat": 32.83155952957727,
+      "lng": -96.89469300168659
     },
     {
       "id": "shp_028",
       "client_name": "Sony",
       "container_label": "SFO-581-250528-28",
       "status": "IN_TRANSIT",
-      "assignment_id": "as_004",
-      "arrival_date": "2026-02-23T07:53:26.834Z",
-      "delivery_by_date": "2026-02-25T07:53:26.834Z",
-      "eta": "2026-02-23T07:53:26.834Z",
+      "assignment_id": "as_011",
+      "arrival_date": "2026-02-24T08:39:54.144Z",
+      "delivery_by_date": "2026-02-26T08:39:54.144Z",
+      "eta": "2026-02-26T03:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.819175344674335,
-      "lng": -96.94173179693789
+      "lat": 32.5771080857063,
+      "lng": -97.17034282690736
     },
     {
       "id": "shp_029",
       "client_name": "Samsung",
       "container_label": "SEA-581-250529-29",
       "status": "DELIVERED",
-      "assignment_id": "as_010",
-      "arrival_date": "2026-02-17T07:53:26.834Z",
-      "delivery_by_date": "2026-02-19T07:53:26.834Z",
-      "eta": "2026-02-17T14:53:26.834Z",
+      "assignment_id": "as_006",
+      "arrival_date": "2026-02-19T08:39:54.144Z",
+      "delivery_by_date": "2026-02-21T08:39:54.144Z",
+      "eta": "2026-02-19T15:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.75599215146632,
-      "lng": -97.32812957745573
+      "lat": 32.86535219063226,
+      "lng": -96.7524721170109
     },
     {
       "id": "shp_030",
@@ -394,38 +381,38 @@
       "container_label": "EWR-581-250520-30",
       "status": "OPEN",
       "assignment_id": null,
-      "arrival_date": "2026-02-20T07:53:26.834Z",
-      "delivery_by_date": "2026-02-22T07:53:26.834Z",
-      "eta": "2026-02-20T15:53:26.834Z",
+      "arrival_date": "2026-02-20T08:39:54.144Z",
+      "delivery_by_date": "2026-02-22T08:39:54.144Z",
+      "eta": "2026-02-20T22:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 33.021072831171125,
-      "lng": -97.05041345789978
+      "lat": 32.89149982106315,
+      "lng": -96.72459164647064
     },
     {
       "id": "shp_031",
       "client_name": "CargoTrans",
       "container_label": "LAX-581-250521-31",
       "status": "IN_TRANSIT",
-      "assignment_id": "as_014",
-      "arrival_date": "2026-02-15T07:53:26.834Z",
-      "delivery_by_date": "2026-02-17T07:53:26.834Z",
-      "eta": "2026-02-15T09:53:26.834Z",
+      "assignment_id": "as_007",
+      "arrival_date": "2026-02-25T08:39:54.144Z",
+      "delivery_by_date": "2026-02-27T08:39:54.144Z",
+      "eta": "2026-02-26T07:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 33.04396229436565,
-      "lng": -97.11127390375385
+      "lat": 32.634534956470546,
+      "lng": -96.7169995572835
     },
     {
       "id": "shp_032",
       "client_name": "ShipCo",
       "container_label": "JFK-581-250522-32",
       "status": "DELIVERED",
-      "assignment_id": "as_010",
-      "arrival_date": "2026-02-20T07:53:26.834Z",
-      "delivery_by_date": "2026-02-22T07:53:26.834Z",
-      "eta": "2026-02-21T15:53:26.834Z",
+      "assignment_id": "as_006",
+      "arrival_date": "2026-02-20T08:39:54.144Z",
+      "delivery_by_date": "2026-02-22T08:39:54.144Z",
+      "eta": "2026-02-21T11:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.99925885682033,
-      "lng": -96.88887386579839
+      "lat": 32.81389290653407,
+      "lng": -96.99764690269711
     },
     {
       "id": "shp_033",
@@ -433,38 +420,38 @@
       "container_label": "SFO-581-250523-33",
       "status": "OPEN",
       "assignment_id": null,
-      "arrival_date": "2026-02-15T07:53:26.834Z",
-      "delivery_by_date": "2026-02-17T07:53:26.834Z",
-      "eta": "2026-02-16T03:53:26.834Z",
+      "arrival_date": "2026-02-22T08:39:54.144Z",
+      "delivery_by_date": "2026-02-24T08:39:54.144Z",
+      "eta": "2026-02-22T18:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.98292238524801,
-      "lng": -96.63209982227228
+      "lat": 32.807787273020445,
+      "lng": -97.16137738535551
     },
     {
       "id": "shp_034",
       "client_name": "Oceanic",
       "container_label": "SEA-581-250524-34",
       "status": "IN_TRANSIT",
-      "assignment_id": "as_002",
-      "arrival_date": "2026-02-16T07:53:26.834Z",
-      "delivery_by_date": "2026-02-18T07:53:26.834Z",
-      "eta": "2026-02-16T12:53:26.834Z",
+      "assignment_id": "as_008",
+      "arrival_date": "2026-02-19T08:39:54.144Z",
+      "delivery_by_date": "2026-02-21T08:39:54.144Z",
+      "eta": "2026-02-20T15:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.749266518357125,
-      "lng": -97.08913184879094
+      "lat": 32.81103738935367,
+      "lng": -97.24248757812907
     },
     {
       "id": "shp_035",
       "client_name": "Sony",
       "container_label": "EWR-581-250525-35",
       "status": "DELIVERED",
-      "assignment_id": "as_003",
-      "arrival_date": "2026-02-19T07:53:26.834Z",
-      "delivery_by_date": "2026-02-21T07:53:26.834Z",
-      "eta": "2026-02-21T05:53:26.834Z",
+      "assignment_id": "as_008",
+      "arrival_date": "2026-02-19T08:39:54.144Z",
+      "delivery_by_date": "2026-02-21T08:39:54.144Z",
+      "eta": "2026-02-19T17:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.808523485279345,
-      "lng": -97.32084943785514
+      "lat": 33.008957394736335,
+      "lng": -96.94764695980959
     },
     {
       "id": "shp_036",
@@ -472,38 +459,38 @@
       "container_label": "LAX-581-250526-36",
       "status": "OPEN",
       "assignment_id": null,
-      "arrival_date": "2026-02-18T07:53:26.834Z",
-      "delivery_by_date": "2026-02-20T07:53:26.834Z",
-      "eta": "2026-02-18T11:53:26.834Z",
+      "arrival_date": "2026-02-21T08:39:54.144Z",
+      "delivery_by_date": "2026-02-23T08:39:54.144Z",
+      "eta": "2026-02-21T21:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 33.02777642739175,
-      "lng": -96.69244064644867
+      "lat": 32.82524252296031,
+      "lng": -96.99935460877323
     },
     {
       "id": "shp_037",
       "client_name": "DHL",
       "container_label": "JFK-581-250527-37",
       "status": "IN_TRANSIT",
-      "assignment_id": "as_007",
-      "arrival_date": "2026-02-17T07:53:26.834Z",
-      "delivery_by_date": "2026-02-19T07:53:26.834Z",
-      "eta": "2026-02-18T16:53:26.834Z",
+      "assignment_id": "as_008",
+      "arrival_date": "2026-02-18T08:39:54.144Z",
+      "delivery_by_date": "2026-02-20T08:39:54.144Z",
+      "eta": "2026-02-19T09:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.687870944667544,
-      "lng": -96.54849285358459
+      "lat": 32.5794228790468,
+      "lng": -96.69689595444335
     },
     {
       "id": "shp_038",
       "client_name": "CargoTrans",
       "container_label": "SFO-581-250528-38",
       "status": "DELIVERED",
-      "assignment_id": "as_008",
-      "arrival_date": "2026-02-15T07:53:26.834Z",
-      "delivery_by_date": "2026-02-17T07:53:26.834Z",
-      "eta": "2026-02-17T00:53:26.834Z",
+      "assignment_id": "as_007",
+      "arrival_date": "2026-02-24T08:39:54.144Z",
+      "delivery_by_date": "2026-02-26T08:39:54.144Z",
+      "eta": "2026-02-25T17:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.72268395394452,
-      "lng": -96.93840227485427
+      "lat": 33.022455034888694,
+      "lng": -97.069986606458
     },
     {
       "id": "shp_039",
@@ -511,38 +498,38 @@
       "container_label": "SEA-581-250529-39",
       "status": "OPEN",
       "assignment_id": null,
-      "arrival_date": "2026-02-16T07:53:26.834Z",
-      "delivery_by_date": "2026-02-18T07:53:26.834Z",
-      "eta": "2026-02-17T01:53:26.834Z",
+      "arrival_date": "2026-02-21T08:39:54.144Z",
+      "delivery_by_date": "2026-02-23T08:39:54.144Z",
+      "eta": "2026-02-23T00:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.65811326208377,
-      "lng": -97.2600531227009
+      "lat": 32.884663031375084,
+      "lng": -96.93208917780687
     },
     {
       "id": "shp_040",
       "client_name": "Logix",
       "container_label": "EWR-581-250520-40",
       "status": "IN_TRANSIT",
-      "assignment_id": "as_007",
-      "arrival_date": "2026-02-24T07:53:26.834Z",
-      "delivery_by_date": "2026-02-26T07:53:26.834Z",
-      "eta": "2026-02-26T06:53:26.834Z",
+      "assignment_id": "as_012",
+      "arrival_date": "2026-02-23T08:39:54.144Z",
+      "delivery_by_date": "2026-02-25T08:39:54.144Z",
+      "eta": "2026-02-25T00:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.828841616502395,
-      "lng": -97.14152209440279
+      "lat": 32.83292390861755,
+      "lng": -97.27863171007635
     },
     {
       "id": "shp_041",
       "client_name": "Oceanic",
       "container_label": "LAX-581-250521-41",
       "status": "DELIVERED",
-      "assignment_id": "as_006",
-      "arrival_date": "2026-02-17T07:53:26.834Z",
-      "delivery_by_date": "2026-02-19T07:53:26.834Z",
-      "eta": "2026-02-17T20:53:26.834Z",
+      "assignment_id": "as_007",
+      "arrival_date": "2026-02-21T08:39:54.144Z",
+      "delivery_by_date": "2026-02-23T08:39:54.144Z",
+      "eta": "2026-02-23T05:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.85911788427551,
-      "lng": -96.8700530773418
+      "lat": 32.9253936497834,
+      "lng": -97.0867999599986
     },
     {
       "id": "shp_042",
@@ -550,25 +537,25 @@
       "container_label": "JFK-581-250522-42",
       "status": "OPEN",
       "assignment_id": null,
-      "arrival_date": "2026-02-17T07:53:26.834Z",
-      "delivery_by_date": "2026-02-19T07:53:26.834Z",
-      "eta": "2026-02-17T07:53:26.834Z",
+      "arrival_date": "2026-02-25T08:39:54.144Z",
+      "delivery_by_date": "2026-02-27T08:39:54.144Z",
+      "eta": "2026-02-25T21:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.7466536420998,
-      "lng": -96.66889540990321
+      "lat": 32.906916540193876,
+      "lng": -96.88979187188501
     },
     {
       "id": "shp_043",
       "client_name": "Samsung",
       "container_label": "SFO-581-250523-43",
       "status": "IN_TRANSIT",
-      "assignment_id": "as_007",
-      "arrival_date": "2026-02-22T07:53:26.834Z",
-      "delivery_by_date": "2026-02-24T07:53:26.834Z",
-      "eta": "2026-02-23T05:53:26.834Z",
+      "assignment_id": "as_003",
+      "arrival_date": "2026-02-21T08:39:54.144Z",
+      "delivery_by_date": "2026-02-23T08:39:54.144Z",
+      "eta": "2026-02-22T21:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.636094449601075,
-      "lng": -97.08172532279643
+      "lat": 32.98562091594975,
+      "lng": -96.57970408628094
     },
     {
       "id": "shp_044",
@@ -576,12 +563,12 @@
       "container_label": "SEA-581-250524-44",
       "status": "DELIVERED",
       "assignment_id": "as_014",
-      "arrival_date": "2026-02-23T07:53:26.834Z",
-      "delivery_by_date": "2026-02-25T07:53:26.834Z",
-      "eta": "2026-02-24T05:53:26.834Z",
+      "arrival_date": "2026-02-24T08:39:54.144Z",
+      "delivery_by_date": "2026-02-26T08:39:54.144Z",
+      "eta": "2026-02-24T11:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.75574897518751,
-      "lng": -97.13478963163257
+      "lat": 32.69108256643348,
+      "lng": -96.97292163773892
     },
     {
       "id": "shp_045",
@@ -589,12 +576,12 @@
       "container_label": "EWR-581-250525-45",
       "status": "OPEN",
       "assignment_id": null,
-      "arrival_date": "2026-02-19T07:53:26.834Z",
-      "delivery_by_date": "2026-02-21T07:53:26.834Z",
-      "eta": "2026-02-21T04:53:26.834Z",
+      "arrival_date": "2026-02-20T08:39:54.144Z",
+      "delivery_by_date": "2026-02-22T08:39:54.144Z",
+      "eta": "2026-02-20T12:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.906464315283614,
-      "lng": -97.17293716580139
+      "lat": 32.70076678764339,
+      "lng": -97.00429079170158
     },
     {
       "id": "shp_046",
@@ -602,25 +589,25 @@
       "container_label": "LAX-581-250526-46",
       "status": "IN_TRANSIT",
       "assignment_id": "as_007",
-      "arrival_date": "2026-02-18T07:53:26.834Z",
-      "delivery_by_date": "2026-02-20T07:53:26.834Z",
-      "eta": "2026-02-18T10:53:26.834Z",
+      "arrival_date": "2026-02-21T08:39:54.144Z",
+      "delivery_by_date": "2026-02-23T08:39:54.144Z",
+      "eta": "2026-02-23T01:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.81859700364063,
-      "lng": -97.36856677284307
+      "lat": 32.5955521729461,
+      "lng": -96.65599495052894
     },
     {
       "id": "shp_047",
       "client_name": "Logix",
       "container_label": "JFK-581-250527-47",
       "status": "DELIVERED",
-      "assignment_id": "as_008",
-      "arrival_date": "2026-02-17T07:53:26.834Z",
-      "delivery_by_date": "2026-02-19T07:53:26.834Z",
-      "eta": "2026-02-17T19:53:26.834Z",
+      "assignment_id": "as_001",
+      "arrival_date": "2026-02-23T08:39:54.144Z",
+      "delivery_by_date": "2026-02-25T08:39:54.144Z",
+      "eta": "2026-02-23T11:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.66102420175377,
-      "lng": -97.24787310648712
+      "lat": 32.9456412564824,
+      "lng": -97.26467226572404
     },
     {
       "id": "shp_048",
@@ -628,38 +615,38 @@
       "container_label": "SFO-581-250528-48",
       "status": "OPEN",
       "assignment_id": null,
-      "arrival_date": "2026-02-17T07:53:26.834Z",
-      "delivery_by_date": "2026-02-19T07:53:26.834Z",
-      "eta": "2026-02-19T05:53:26.834Z",
+      "arrival_date": "2026-02-23T08:39:54.144Z",
+      "delivery_by_date": "2026-02-25T08:39:54.144Z",
+      "eta": "2026-02-24T18:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.85544441087915,
-      "lng": -96.9682010278744
+      "lat": 32.95873290085908,
+      "lng": -96.79690768469922
     },
     {
       "id": "shp_049",
       "client_name": "Sony",
       "container_label": "SEA-581-250529-49",
       "status": "IN_TRANSIT",
-      "assignment_id": "as_006",
-      "arrival_date": "2026-02-24T07:53:26.834Z",
-      "delivery_by_date": "2026-02-26T07:53:26.834Z",
-      "eta": "2026-02-25T16:53:26.834Z",
+      "assignment_id": "as_007",
+      "arrival_date": "2026-02-25T08:39:54.144Z",
+      "delivery_by_date": "2026-02-27T08:39:54.144Z",
+      "eta": "2026-02-25T17:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.85721273712715,
-      "lng": -96.64242325162297
+      "lat": 32.7972472331165,
+      "lng": -96.82292104931784
     },
     {
       "id": "shp_050",
       "client_name": "Samsung",
       "container_label": "EWR-581-250520-50",
       "status": "DELIVERED",
-      "assignment_id": "as_005",
-      "arrival_date": "2026-02-16T07:53:26.834Z",
-      "delivery_by_date": "2026-02-18T07:53:26.834Z",
-      "eta": "2026-02-17T23:53:26.834Z",
+      "assignment_id": "as_011",
+      "arrival_date": "2026-02-17T08:39:54.144Z",
+      "delivery_by_date": "2026-02-19T08:39:54.144Z",
+      "eta": "2026-02-18T13:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 33.018225148504996,
-      "lng": -97.24002827814986
+      "lat": 33.00791851288861,
+      "lng": -97.28270437664433
     },
     {
       "id": "shp_051",
@@ -667,38 +654,38 @@
       "container_label": "LAX-581-250521-51",
       "status": "OPEN",
       "assignment_id": null,
-      "arrival_date": "2026-02-23T07:53:26.834Z",
-      "delivery_by_date": "2026-02-25T07:53:26.834Z",
-      "eta": "2026-02-24T11:53:26.834Z",
+      "arrival_date": "2026-02-26T08:39:54.144Z",
+      "delivery_by_date": "2026-02-28T08:39:54.144Z",
+      "eta": "2026-02-26T11:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.72138331503113,
-      "lng": -97.17867033510876
+      "lat": 33.01547150178804,
+      "lng": -96.79009288757686
     },
     {
       "id": "shp_052",
       "client_name": "CargoTrans",
       "container_label": "JFK-581-250522-52",
       "status": "IN_TRANSIT",
-      "assignment_id": "as_002",
-      "arrival_date": "2026-02-19T07:53:26.834Z",
-      "delivery_by_date": "2026-02-21T07:53:26.834Z",
-      "eta": "2026-02-20T17:53:26.834Z",
+      "assignment_id": "as_009",
+      "arrival_date": "2026-02-19T08:39:54.144Z",
+      "delivery_by_date": "2026-02-21T08:39:54.144Z",
+      "eta": "2026-02-19T20:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.93147237393689,
-      "lng": -96.6232832309254
+      "lat": 32.74542328646904,
+      "lng": -96.67206421917902
     },
     {
       "id": "shp_053",
       "client_name": "ShipCo",
       "container_label": "SFO-581-250523-53",
       "status": "DELIVERED",
-      "assignment_id": "as_015",
-      "arrival_date": "2026-02-16T07:53:26.834Z",
-      "delivery_by_date": "2026-02-18T07:53:26.834Z",
-      "eta": "2026-02-18T02:53:26.834Z",
+      "assignment_id": "as_010",
+      "arrival_date": "2026-02-21T08:39:54.144Z",
+      "delivery_by_date": "2026-02-23T08:39:54.144Z",
+      "eta": "2026-02-22T12:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.97028687912279,
-      "lng": -97.36132188320677
+      "lat": 32.56169426667418,
+      "lng": -96.55211582204095
     },
     {
       "id": "shp_054",
@@ -706,38 +693,38 @@
       "container_label": "SEA-581-250524-54",
       "status": "OPEN",
       "assignment_id": null,
-      "arrival_date": "2026-02-23T07:53:26.834Z",
-      "delivery_by_date": "2026-02-25T07:53:26.834Z",
-      "eta": "2026-02-24T08:53:26.834Z",
+      "arrival_date": "2026-02-24T08:39:54.144Z",
+      "delivery_by_date": "2026-02-26T08:39:54.144Z",
+      "eta": "2026-02-25T15:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.82307230975716,
-      "lng": -96.57649049526071
+      "lat": 32.77074257754532,
+      "lng": -97.0684074548843
     },
     {
       "id": "shp_055",
       "client_name": "Oceanic",
       "container_label": "EWR-581-250525-55",
       "status": "IN_TRANSIT",
-      "assignment_id": "as_004",
-      "arrival_date": "2026-02-24T07:53:26.834Z",
-      "delivery_by_date": "2026-02-26T07:53:26.834Z",
-      "eta": "2026-02-25T17:53:26.834Z",
+      "assignment_id": "as_013",
+      "arrival_date": "2026-02-17T08:39:54.144Z",
+      "delivery_by_date": "2026-02-19T08:39:54.144Z",
+      "eta": "2026-02-17T15:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.723636366809444,
-      "lng": -97.35002766592815
+      "lat": 32.82169295975963,
+      "lng": -97.2296964933335
     },
     {
       "id": "shp_056",
       "client_name": "Sony",
       "container_label": "LAX-581-250526-56",
       "status": "DELIVERED",
-      "assignment_id": "as_002",
-      "arrival_date": "2026-02-24T07:53:26.834Z",
-      "delivery_by_date": "2026-02-26T07:53:26.834Z",
-      "eta": "2026-02-26T04:53:26.834Z",
+      "assignment_id": "as_014",
+      "arrival_date": "2026-02-21T08:39:54.144Z",
+      "delivery_by_date": "2026-02-23T08:39:54.144Z",
+      "eta": "2026-02-22T14:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.93763452361761,
-      "lng": -97.15920065325415
+      "lat": 32.82332453675952,
+      "lng": -97.3531974484
     },
     {
       "id": "shp_057",
@@ -745,38 +732,38 @@
       "container_label": "JFK-581-250527-57",
       "status": "OPEN",
       "assignment_id": null,
-      "arrival_date": "2026-02-18T07:53:26.834Z",
-      "delivery_by_date": "2026-02-20T07:53:26.834Z",
-      "eta": "2026-02-19T21:53:26.834Z",
+      "arrival_date": "2026-02-18T08:39:54.144Z",
+      "delivery_by_date": "2026-02-20T08:39:54.144Z",
+      "eta": "2026-02-19T12:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.98426642050676,
-      "lng": -97.02027725589119
+      "lat": 32.887184904858955,
+      "lng": -97.14424820709466
     },
     {
       "id": "shp_058",
       "client_name": "DHL",
       "container_label": "SFO-581-250528-58",
       "status": "IN_TRANSIT",
-      "assignment_id": "as_015",
-      "arrival_date": "2026-02-15T07:53:26.834Z",
-      "delivery_by_date": "2026-02-17T07:53:26.834Z",
-      "eta": "2026-02-16T18:53:26.834Z",
+      "assignment_id": "as_008",
+      "arrival_date": "2026-02-19T08:39:54.144Z",
+      "delivery_by_date": "2026-02-21T08:39:54.144Z",
+      "eta": "2026-02-20T13:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 33.04598203521658,
-      "lng": -97.10345954881491
+      "lat": 32.67386787837818,
+      "lng": -97.07567094432703
     },
     {
       "id": "shp_059",
       "client_name": "CargoTrans",
       "container_label": "SEA-581-250529-59",
       "status": "DELIVERED",
-      "assignment_id": "as_010",
-      "arrival_date": "2026-02-18T07:53:26.834Z",
-      "delivery_by_date": "2026-02-20T07:53:26.834Z",
-      "eta": "2026-02-20T00:53:26.834Z",
+      "assignment_id": "as_008",
+      "arrival_date": "2026-02-18T08:39:54.144Z",
+      "delivery_by_date": "2026-02-20T08:39:54.144Z",
+      "eta": "2026-02-19T23:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.70889180239876,
-      "lng": -96.8312478329373
+      "lat": 32.833005521423324,
+      "lng": -97.37035321165797
     },
     {
       "id": "shp_060",
@@ -784,38 +771,38 @@
       "container_label": "EWR-581-250520-60",
       "status": "OPEN",
       "assignment_id": null,
-      "arrival_date": "2026-02-21T07:53:26.834Z",
-      "delivery_by_date": "2026-02-23T07:53:26.834Z",
-      "eta": "2026-02-22T21:53:26.834Z",
+      "arrival_date": "2026-02-18T08:39:54.144Z",
+      "delivery_by_date": "2026-02-20T08:39:54.144Z",
+      "eta": "2026-02-19T23:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.958873216612055,
-      "lng": -96.91440412687938
+      "lat": 32.894031314673114,
+      "lng": -96.8673087879367
     },
     {
       "id": "shp_061",
       "client_name": "Logix",
       "container_label": "LAX-581-250521-61",
       "status": "IN_TRANSIT",
-      "assignment_id": "as_014",
-      "arrival_date": "2026-02-17T07:53:26.834Z",
-      "delivery_by_date": "2026-02-19T07:53:26.834Z",
-      "eta": "2026-02-18T14:53:26.834Z",
+      "assignment_id": "as_009",
+      "arrival_date": "2026-02-23T08:39:54.144Z",
+      "delivery_by_date": "2026-02-25T08:39:54.144Z",
+      "eta": "2026-02-23T23:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.56938666576599,
-      "lng": -97.01027915464171
+      "lat": 32.59970531653996,
+      "lng": -97.12355825574477
     },
     {
       "id": "shp_062",
       "client_name": "Oceanic",
       "container_label": "JFK-581-250522-62",
       "status": "DELIVERED",
-      "assignment_id": "as_008",
-      "arrival_date": "2026-02-23T07:53:26.834Z",
-      "delivery_by_date": "2026-02-25T07:53:26.834Z",
-      "eta": "2026-02-23T08:53:26.834Z",
+      "assignment_id": "as_001",
+      "arrival_date": "2026-02-19T08:39:54.144Z",
+      "delivery_by_date": "2026-02-21T08:39:54.144Z",
+      "eta": "2026-02-19T11:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.716121732361856,
-      "lng": -97.03659851786082
+      "lat": 32.99402581337361,
+      "lng": -97.32840798136918
     },
     {
       "id": "shp_063",
@@ -823,38 +810,38 @@
       "container_label": "SFO-581-250523-63",
       "status": "OPEN",
       "assignment_id": null,
-      "arrival_date": "2026-02-24T07:53:26.834Z",
-      "delivery_by_date": "2026-02-26T07:53:26.834Z",
-      "eta": "2026-02-25T11:53:26.834Z",
+      "arrival_date": "2026-02-24T08:39:54.144Z",
+      "delivery_by_date": "2026-02-26T08:39:54.144Z",
+      "eta": "2026-02-25T05:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.89189642670255,
-      "lng": -97.00007874271267
+      "lat": 32.57877403539323,
+      "lng": -96.69483462037208
     },
     {
       "id": "shp_064",
       "client_name": "Samsung",
       "container_label": "SEA-581-250524-64",
       "status": "IN_TRANSIT",
-      "assignment_id": "as_008",
-      "arrival_date": "2026-02-18T07:53:26.834Z",
-      "delivery_by_date": "2026-02-20T07:53:26.834Z",
-      "eta": "2026-02-19T08:53:26.834Z",
+      "assignment_id": "as_003",
+      "arrival_date": "2026-02-18T08:39:54.144Z",
+      "delivery_by_date": "2026-02-20T08:39:54.144Z",
+      "eta": "2026-02-20T06:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.829878702463695,
-      "lng": -97.38164436169892
+      "lat": 32.971731653053595,
+      "lng": -96.67487249632084
     },
     {
       "id": "shp_065",
       "client_name": "DHL",
       "container_label": "EWR-581-250525-65",
       "status": "DELIVERED",
-      "assignment_id": "as_007",
-      "arrival_date": "2026-02-22T07:53:26.834Z",
-      "delivery_by_date": "2026-02-24T07:53:26.834Z",
-      "eta": "2026-02-23T17:53:26.834Z",
+      "assignment_id": "as_003",
+      "arrival_date": "2026-02-19T08:39:54.144Z",
+      "delivery_by_date": "2026-02-21T08:39:54.144Z",
+      "eta": "2026-02-20T07:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.81692440209851,
-      "lng": -97.09285512623627
+      "lat": 32.65079320605114,
+      "lng": -97.00305909038418
     },
     {
       "id": "shp_066",
@@ -862,38 +849,38 @@
       "container_label": "LAX-581-250526-66",
       "status": "OPEN",
       "assignment_id": null,
-      "arrival_date": "2026-02-20T07:53:26.834Z",
-      "delivery_by_date": "2026-02-22T07:53:26.834Z",
-      "eta": "2026-02-20T21:53:26.834Z",
+      "arrival_date": "2026-02-24T08:39:54.144Z",
+      "delivery_by_date": "2026-02-26T08:39:54.144Z",
+      "eta": "2026-02-26T03:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.874002594527745,
-      "lng": -97.1796637375916
+      "lat": 32.749266713991915,
+      "lng": -97.10803630586445
     },
     {
       "id": "shp_067",
       "client_name": "ShipCo",
       "container_label": "JFK-581-250527-67",
       "status": "IN_TRANSIT",
-      "assignment_id": "as_011",
-      "arrival_date": "2026-02-15T07:53:26.834Z",
-      "delivery_by_date": "2026-02-17T07:53:26.834Z",
-      "eta": "2026-02-15T22:53:26.834Z",
+      "assignment_id": "as_001",
+      "arrival_date": "2026-02-21T08:39:54.144Z",
+      "delivery_by_date": "2026-02-23T08:39:54.144Z",
+      "eta": "2026-02-22T00:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.92927598721599,
-      "lng": -96.66816424214304
+      "lat": 32.996909650186474,
+      "lng": -96.55182284085362
     },
     {
       "id": "shp_068",
       "client_name": "Logix",
       "container_label": "SFO-581-250528-68",
       "status": "DELIVERED",
-      "assignment_id": "as_002",
-      "arrival_date": "2026-02-15T07:53:26.834Z",
-      "delivery_by_date": "2026-02-17T07:53:26.834Z",
-      "eta": "2026-02-15T19:53:26.834Z",
+      "assignment_id": "as_006",
+      "arrival_date": "2026-02-21T08:39:54.144Z",
+      "delivery_by_date": "2026-02-23T08:39:54.144Z",
+      "eta": "2026-02-22T02:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.66940588887399,
-      "lng": -96.71879220068075
+      "lat": 32.68146713205225,
+      "lng": -97.0859907586595
     },
     {
       "id": "shp_069",
@@ -901,38 +888,38 @@
       "container_label": "SEA-581-250529-69",
       "status": "OPEN",
       "assignment_id": null,
-      "arrival_date": "2026-02-24T07:53:26.834Z",
-      "delivery_by_date": "2026-02-26T07:53:26.834Z",
-      "eta": "2026-02-25T18:53:26.834Z",
+      "arrival_date": "2026-02-26T08:39:54.144Z",
+      "delivery_by_date": "2026-02-28T08:39:54.144Z",
+      "eta": "2026-02-27T08:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.950049636331464,
-      "lng": -96.82197905885982
+      "lat": 32.657517919853,
+      "lng": -96.99695222582575
     },
     {
       "id": "shp_070",
       "client_name": "Sony",
       "container_label": "EWR-581-250520-70",
       "status": "IN_TRANSIT",
-      "assignment_id": "as_005",
-      "arrival_date": "2026-02-22T07:53:26.834Z",
-      "delivery_by_date": "2026-02-24T07:53:26.834Z",
-      "eta": "2026-02-23T18:53:26.834Z",
+      "assignment_id": "as_007",
+      "arrival_date": "2026-02-24T08:39:54.144Z",
+      "delivery_by_date": "2026-02-26T08:39:54.144Z",
+      "eta": "2026-02-25T13:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.57857565163901,
-      "lng": -96.9026929327622
+      "lat": 32.980080187123576,
+      "lng": -96.80991208104601
     },
     {
       "id": "shp_071",
       "client_name": "Samsung",
       "container_label": "LAX-581-250521-71",
       "status": "DELIVERED",
-      "assignment_id": "as_009",
-      "arrival_date": "2026-02-18T07:53:26.834Z",
-      "delivery_by_date": "2026-02-20T07:53:26.834Z",
-      "eta": "2026-02-20T06:53:26.834Z",
+      "assignment_id": "as_001",
+      "arrival_date": "2026-02-25T08:39:54.144Z",
+      "delivery_by_date": "2026-02-27T08:39:54.144Z",
+      "eta": "2026-02-26T08:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.91277000838589,
-      "lng": -96.64414321176325
+      "lat": 33.02573950596887,
+      "lng": -97.26151381350775
     },
     {
       "id": "shp_072",
@@ -940,38 +927,38 @@
       "container_label": "JFK-581-250522-72",
       "status": "OPEN",
       "assignment_id": null,
-      "arrival_date": "2026-02-24T07:53:26.834Z",
-      "delivery_by_date": "2026-02-26T07:53:26.834Z",
-      "eta": "2026-02-25T06:53:26.834Z",
+      "arrival_date": "2026-02-21T08:39:54.144Z",
+      "delivery_by_date": "2026-02-23T08:39:54.144Z",
+      "eta": "2026-02-22T01:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.921279111220905,
-      "lng": -97.03679385369438
+      "lat": 32.77521738578704,
+      "lng": -96.93098435313274
     },
     {
       "id": "shp_073",
       "client_name": "CargoTrans",
       "container_label": "SFO-581-250523-73",
       "status": "IN_TRANSIT",
-      "assignment_id": "as_007",
-      "arrival_date": "2026-02-15T07:53:26.834Z",
-      "delivery_by_date": "2026-02-17T07:53:26.834Z",
-      "eta": "2026-02-16T22:53:26.834Z",
+      "assignment_id": "as_008",
+      "arrival_date": "2026-02-21T08:39:54.144Z",
+      "delivery_by_date": "2026-02-23T08:39:54.144Z",
+      "eta": "2026-02-22T00:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.6781854448888,
-      "lng": -96.59723503058352
+      "lat": 32.63741623057571,
+      "lng": -97.19942037793362
     },
     {
       "id": "shp_074",
       "client_name": "ShipCo",
       "container_label": "SEA-581-250524-74",
       "status": "DELIVERED",
-      "assignment_id": "as_005",
-      "arrival_date": "2026-02-18T07:53:26.834Z",
-      "delivery_by_date": "2026-02-20T07:53:26.834Z",
-      "eta": "2026-02-19T12:53:26.834Z",
+      "assignment_id": "as_010",
+      "arrival_date": "2026-02-21T08:39:54.144Z",
+      "delivery_by_date": "2026-02-23T08:39:54.144Z",
+      "eta": "2026-02-22T07:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.66298560727625,
-      "lng": -96.82998672637461
+      "lat": 32.57146863039835,
+      "lng": -96.96009863785935
     },
     {
       "id": "shp_075",
@@ -979,38 +966,38 @@
       "container_label": "EWR-581-250525-75",
       "status": "OPEN",
       "assignment_id": null,
-      "arrival_date": "2026-02-19T07:53:26.834Z",
-      "delivery_by_date": "2026-02-21T07:53:26.834Z",
-      "eta": "2026-02-19T08:53:26.834Z",
+      "arrival_date": "2026-02-22T08:39:54.144Z",
+      "delivery_by_date": "2026-02-24T08:39:54.144Z",
+      "eta": "2026-02-24T05:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.81179462754083,
-      "lng": -97.00245038885787
+      "lat": 32.70124486676031,
+      "lng": -97.37166635595231
     },
     {
       "id": "shp_076",
       "client_name": "Oceanic",
       "container_label": "LAX-581-250526-76",
       "status": "IN_TRANSIT",
-      "assignment_id": "as_007",
-      "arrival_date": "2026-02-20T07:53:26.834Z",
-      "delivery_by_date": "2026-02-22T07:53:26.834Z",
-      "eta": "2026-02-22T06:53:26.834Z",
+      "assignment_id": "as_014",
+      "arrival_date": "2026-02-19T08:39:54.144Z",
+      "delivery_by_date": "2026-02-21T08:39:54.144Z",
+      "eta": "2026-02-19T08:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.75571946382803,
-      "lng": -97.02485053317854
+      "lat": 33.04604881383146,
+      "lng": -97.39394291657925
     },
     {
       "id": "shp_077",
       "client_name": "Sony",
       "container_label": "JFK-581-250527-77",
       "status": "DELIVERED",
-      "assignment_id": "as_011",
-      "arrival_date": "2026-02-19T07:53:26.834Z",
-      "delivery_by_date": "2026-02-21T07:53:26.834Z",
-      "eta": "2026-02-20T14:53:26.834Z",
+      "assignment_id": "as_002",
+      "arrival_date": "2026-02-26T08:39:54.144Z",
+      "delivery_by_date": "2026-02-28T08:39:54.144Z",
+      "eta": "2026-02-27T13:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 33.0037274231643,
-      "lng": -97.07331498285467
+      "lat": 32.59160979920561,
+      "lng": -96.9247553108239
     },
     {
       "id": "shp_078",
@@ -1018,38 +1005,38 @@
       "container_label": "SFO-581-250528-78",
       "status": "OPEN",
       "assignment_id": null,
-      "arrival_date": "2026-02-20T07:53:26.834Z",
-      "delivery_by_date": "2026-02-22T07:53:26.834Z",
-      "eta": "2026-02-22T05:53:26.834Z",
+      "arrival_date": "2026-02-20T08:39:54.144Z",
+      "delivery_by_date": "2026-02-22T08:39:54.144Z",
+      "eta": "2026-02-20T10:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.89891159671845,
-      "lng": -96.58133416613452
+      "lat": 32.60115316629388,
+      "lng": -97.07283430521682
     },
     {
       "id": "shp_079",
       "client_name": "DHL",
       "container_label": "SEA-581-250529-79",
       "status": "IN_TRANSIT",
-      "assignment_id": "as_006",
-      "arrival_date": "2026-02-17T07:53:26.834Z",
-      "delivery_by_date": "2026-02-19T07:53:26.834Z",
-      "eta": "2026-02-18T06:53:26.834Z",
+      "assignment_id": "as_003",
+      "arrival_date": "2026-02-22T08:39:54.144Z",
+      "delivery_by_date": "2026-02-24T08:39:54.144Z",
+      "eta": "2026-02-22T11:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 33.031994141255886,
-      "lng": -96.654931745078
+      "lat": 32.94891439256219,
+      "lng": -97.23052485964504
     },
     {
       "id": "shp_080",
       "client_name": "CargoTrans",
       "container_label": "EWR-581-250520-80",
       "status": "DELIVERED",
-      "assignment_id": "as_010",
-      "arrival_date": "2026-02-17T07:53:26.834Z",
-      "delivery_by_date": "2026-02-19T07:53:26.834Z",
-      "eta": "2026-02-17T16:53:26.834Z",
+      "assignment_id": "as_008",
+      "arrival_date": "2026-02-19T08:39:54.144Z",
+      "delivery_by_date": "2026-02-21T08:39:54.144Z",
+      "eta": "2026-02-20T01:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.67462672976506,
-      "lng": -96.94548057072055
+      "lat": 32.616313626047905,
+      "lng": -96.95714292305763
     },
     {
       "id": "shp_081",
@@ -1057,38 +1044,38 @@
       "container_label": "LAX-581-250521-81",
       "status": "OPEN",
       "assignment_id": null,
-      "arrival_date": "2026-02-19T07:53:26.834Z",
-      "delivery_by_date": "2026-02-21T07:53:26.834Z",
-      "eta": "2026-02-20T08:53:26.834Z",
+      "arrival_date": "2026-02-19T08:39:54.144Z",
+      "delivery_by_date": "2026-02-21T08:39:54.144Z",
+      "eta": "2026-02-20T01:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.772501479550314,
-      "lng": -96.96829368329658
+      "lat": 32.57119588144769,
+      "lng": -97.03880352112695
     },
     {
       "id": "shp_082",
       "client_name": "Logix",
       "container_label": "JFK-581-250522-82",
       "status": "IN_TRANSIT",
-      "assignment_id": "as_004",
-      "arrival_date": "2026-02-16T07:53:26.834Z",
-      "delivery_by_date": "2026-02-18T07:53:26.834Z",
-      "eta": "2026-02-18T01:53:26.834Z",
+      "assignment_id": "as_008",
+      "arrival_date": "2026-02-24T08:39:54.144Z",
+      "delivery_by_date": "2026-02-26T08:39:54.144Z",
+      "eta": "2026-02-25T07:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.74714097453239,
-      "lng": -96.50470098294686
+      "lat": 32.80468710007595,
+      "lng": -97.35528510225998
     },
     {
       "id": "shp_083",
       "client_name": "Oceanic",
       "container_label": "SFO-581-250523-83",
       "status": "DELIVERED",
-      "assignment_id": "as_004",
-      "arrival_date": "2026-02-24T07:53:26.834Z",
-      "delivery_by_date": "2026-02-26T07:53:26.834Z",
-      "eta": "2026-02-26T04:53:26.834Z",
+      "assignment_id": "as_003",
+      "arrival_date": "2026-02-21T08:39:54.144Z",
+      "delivery_by_date": "2026-02-23T08:39:54.144Z",
+      "eta": "2026-02-22T23:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.70544000533727,
-      "lng": -96.79872986871835
+      "lat": 33.043347528548445,
+      "lng": -96.51005462098573
     },
     {
       "id": "shp_084",
@@ -1096,38 +1083,38 @@
       "container_label": "SEA-581-250524-84",
       "status": "OPEN",
       "assignment_id": null,
-      "arrival_date": "2026-02-21T07:53:26.834Z",
-      "delivery_by_date": "2026-02-23T07:53:26.834Z",
-      "eta": "2026-02-22T17:53:26.834Z",
+      "arrival_date": "2026-02-19T08:39:54.144Z",
+      "delivery_by_date": "2026-02-21T08:39:54.144Z",
+      "eta": "2026-02-19T20:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.76428331827333,
-      "lng": -96.78733663194956
+      "lat": 32.60842385295059,
+      "lng": -96.60862638189782
     },
     {
       "id": "shp_085",
       "client_name": "Samsung",
       "container_label": "EWR-581-250525-85",
       "status": "IN_TRANSIT",
-      "assignment_id": "as_006",
-      "arrival_date": "2026-02-23T07:53:26.834Z",
-      "delivery_by_date": "2026-02-25T07:53:26.834Z",
-      "eta": "2026-02-23T14:53:26.834Z",
+      "assignment_id": "as_004",
+      "arrival_date": "2026-02-21T08:39:54.144Z",
+      "delivery_by_date": "2026-02-23T08:39:54.144Z",
+      "eta": "2026-02-22T04:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.80115197729377,
-      "lng": -96.50368448335352
+      "lat": 32.766748966626736,
+      "lng": -97.38986121405999
     },
     {
       "id": "shp_086",
       "client_name": "DHL",
       "container_label": "LAX-581-250526-86",
       "status": "DELIVERED",
-      "assignment_id": "as_014",
-      "arrival_date": "2026-02-16T07:53:26.834Z",
-      "delivery_by_date": "2026-02-18T07:53:26.834Z",
-      "eta": "2026-02-17T20:53:26.834Z",
+      "assignment_id": "as_013",
+      "arrival_date": "2026-02-23T08:39:54.144Z",
+      "delivery_by_date": "2026-02-25T08:39:54.144Z",
+      "eta": "2026-02-23T12:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.654525034982115,
-      "lng": -97.16289620195067
+      "lat": 32.64741770976436,
+      "lng": -96.70182236984085
     },
     {
       "id": "shp_087",
@@ -1135,38 +1122,38 @@
       "container_label": "JFK-581-250527-87",
       "status": "OPEN",
       "assignment_id": null,
-      "arrival_date": "2026-02-22T07:53:26.834Z",
-      "delivery_by_date": "2026-02-24T07:53:26.834Z",
-      "eta": "2026-02-22T07:53:26.834Z",
+      "arrival_date": "2026-02-18T08:39:54.144Z",
+      "delivery_by_date": "2026-02-20T08:39:54.144Z",
+      "eta": "2026-02-18T14:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.99412784883966,
-      "lng": -97.15656918594995
+      "lat": 32.67276397735917,
+      "lng": -97.0096165532294
     },
     {
       "id": "shp_088",
       "client_name": "ShipCo",
       "container_label": "SFO-581-250528-88",
       "status": "IN_TRANSIT",
-      "assignment_id": "as_015",
-      "arrival_date": "2026-02-16T07:53:26.834Z",
-      "delivery_by_date": "2026-02-18T07:53:26.834Z",
-      "eta": "2026-02-17T21:53:26.834Z",
+      "assignment_id": "as_013",
+      "arrival_date": "2026-02-23T08:39:54.144Z",
+      "delivery_by_date": "2026-02-25T08:39:54.144Z",
+      "eta": "2026-02-23T09:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.93961010984325,
-      "lng": -97.18459758532029
+      "lat": 32.79416808187577,
+      "lng": -96.67552039087994
     },
     {
       "id": "shp_089",
       "client_name": "Logix",
       "container_label": "SEA-581-250529-89",
       "status": "DELIVERED",
-      "assignment_id": "as_015",
-      "arrival_date": "2026-02-22T07:53:26.834Z",
-      "delivery_by_date": "2026-02-24T07:53:26.834Z",
-      "eta": "2026-02-23T17:53:26.834Z",
+      "assignment_id": "as_003",
+      "arrival_date": "2026-02-21T08:39:54.144Z",
+      "delivery_by_date": "2026-02-23T08:39:54.144Z",
+      "eta": "2026-02-21T09:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.894787119463075,
-      "lng": -96.70367369859328
+      "lat": 32.550958512787695,
+      "lng": -97.16311701930886
     },
     {
       "id": "shp_090",
@@ -1174,38 +1161,38 @@
       "container_label": "EWR-581-250520-90",
       "status": "OPEN",
       "assignment_id": null,
-      "arrival_date": "2026-02-16T07:53:26.834Z",
-      "delivery_by_date": "2026-02-18T07:53:26.834Z",
-      "eta": "2026-02-17T04:53:26.834Z",
+      "arrival_date": "2026-02-24T08:39:54.144Z",
+      "delivery_by_date": "2026-02-26T08:39:54.144Z",
+      "eta": "2026-02-26T02:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.88126021806564,
-      "lng": -96.62914686188142
+      "lat": 32.628940722077836,
+      "lng": -96.53157279318867
     },
     {
       "id": "shp_091",
       "client_name": "Sony",
       "container_label": "LAX-581-250521-91",
       "status": "IN_TRANSIT",
-      "assignment_id": "as_014",
-      "arrival_date": "2026-02-19T07:53:26.834Z",
-      "delivery_by_date": "2026-02-21T07:53:26.834Z",
-      "eta": "2026-02-20T16:53:26.834Z",
+      "assignment_id": "as_001",
+      "arrival_date": "2026-02-26T08:39:54.144Z",
+      "delivery_by_date": "2026-02-28T08:39:54.144Z",
+      "eta": "2026-02-26T19:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.9784386343763,
-      "lng": -97.09126772191482
+      "lat": 32.78920341050975,
+      "lng": -97.22295668796201
     },
     {
       "id": "shp_092",
       "client_name": "Samsung",
       "container_label": "JFK-581-250522-92",
       "status": "DELIVERED",
-      "assignment_id": "as_005",
-      "arrival_date": "2026-02-17T07:53:26.834Z",
-      "delivery_by_date": "2026-02-19T07:53:26.834Z",
-      "eta": "2026-02-18T19:53:26.834Z",
+      "assignment_id": "as_006",
+      "arrival_date": "2026-02-26T08:39:54.144Z",
+      "delivery_by_date": "2026-02-28T08:39:54.144Z",
+      "eta": "2026-02-27T12:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.59077688279441,
-      "lng": -96.70688333153868
+      "lat": 32.930027188086584,
+      "lng": -96.78434515577236
     },
     {
       "id": "shp_093",
@@ -1213,38 +1200,38 @@
       "container_label": "SFO-581-250523-93",
       "status": "OPEN",
       "assignment_id": null,
-      "arrival_date": "2026-02-21T07:53:26.834Z",
-      "delivery_by_date": "2026-02-23T07:53:26.834Z",
-      "eta": "2026-02-21T22:53:26.834Z",
+      "arrival_date": "2026-02-20T08:39:54.144Z",
+      "delivery_by_date": "2026-02-22T08:39:54.144Z",
+      "eta": "2026-02-21T21:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.80430897248968,
-      "lng": -96.51502164033447
+      "lat": 32.58217241049345,
+      "lng": -97.08897184626966
     },
     {
       "id": "shp_094",
       "client_name": "CargoTrans",
       "container_label": "SEA-581-250524-94",
       "status": "IN_TRANSIT",
-      "assignment_id": "as_004",
-      "arrival_date": "2026-02-17T07:53:26.834Z",
-      "delivery_by_date": "2026-02-19T07:53:26.834Z",
-      "eta": "2026-02-19T06:53:26.834Z",
+      "assignment_id": "as_006",
+      "arrival_date": "2026-02-24T08:39:54.144Z",
+      "delivery_by_date": "2026-02-26T08:39:54.144Z",
+      "eta": "2026-02-26T00:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.59983781818119,
-      "lng": -97.02299349917703
+      "lat": 32.942557886703675,
+      "lng": -96.68818256083556
     },
     {
       "id": "shp_095",
       "client_name": "ShipCo",
       "container_label": "EWR-581-250525-95",
       "status": "DELIVERED",
-      "assignment_id": "as_008",
-      "arrival_date": "2026-02-16T07:53:26.834Z",
-      "delivery_by_date": "2026-02-18T07:53:26.834Z",
-      "eta": "2026-02-16T11:53:26.834Z",
+      "assignment_id": "as_015",
+      "arrival_date": "2026-02-20T08:39:54.144Z",
+      "delivery_by_date": "2026-02-22T08:39:54.144Z",
+      "eta": "2026-02-21T08:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.55928632062174,
-      "lng": -96.9563458922429
+      "lat": 32.719727094636255,
+      "lng": -97.34372213675063
     },
     {
       "id": "shp_096",
@@ -1252,38 +1239,38 @@
       "container_label": "LAX-581-250526-96",
       "status": "OPEN",
       "assignment_id": null,
-      "arrival_date": "2026-02-16T07:53:26.834Z",
-      "delivery_by_date": "2026-02-18T07:53:26.834Z",
-      "eta": "2026-02-17T02:53:26.834Z",
+      "arrival_date": "2026-02-25T08:39:54.144Z",
+      "delivery_by_date": "2026-02-27T08:39:54.144Z",
+      "eta": "2026-02-26T06:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.62156560289661,
-      "lng": -96.72273401473609
+      "lat": 32.8750737176759,
+      "lng": -96.6793514764992
     },
     {
       "id": "shp_097",
       "client_name": "Oceanic",
       "container_label": "JFK-581-250527-97",
       "status": "IN_TRANSIT",
-      "assignment_id": "as_001",
-      "arrival_date": "2026-02-17T07:53:26.834Z",
-      "delivery_by_date": "2026-02-19T07:53:26.834Z",
-      "eta": "2026-02-18T22:53:26.834Z",
+      "assignment_id": "as_004",
+      "arrival_date": "2026-02-23T08:39:54.144Z",
+      "delivery_by_date": "2026-02-25T08:39:54.144Z",
+      "eta": "2026-02-24T17:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.90002490375257,
-      "lng": -96.57942382173952
+      "lat": 32.852144195839855,
+      "lng": -96.59457283934522
     },
     {
       "id": "shp_098",
       "client_name": "Sony",
       "container_label": "SFO-581-250528-98",
       "status": "DELIVERED",
-      "assignment_id": "as_004",
-      "arrival_date": "2026-02-21T07:53:26.834Z",
-      "delivery_by_date": "2026-02-23T07:53:26.834Z",
-      "eta": "2026-02-23T03:53:26.834Z",
+      "assignment_id": "as_003",
+      "arrival_date": "2026-02-17T08:39:54.144Z",
+      "delivery_by_date": "2026-02-19T08:39:54.144Z",
+      "eta": "2026-02-18T12:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.77582290417981,
-      "lng": -96.85263872923667
+      "lat": 32.822557510385835,
+      "lng": -96.81441122062962
     },
     {
       "id": "shp_099",
@@ -1291,25 +1278,25 @@
       "container_label": "SEA-581-250529-99",
       "status": "OPEN",
       "assignment_id": null,
-      "arrival_date": "2026-02-23T07:53:26.834Z",
-      "delivery_by_date": "2026-02-25T07:53:26.834Z",
-      "eta": "2026-02-25T05:53:26.834Z",
+      "arrival_date": "2026-02-26T08:39:54.144Z",
+      "delivery_by_date": "2026-02-28T08:39:54.144Z",
+      "eta": "2026-02-27T13:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.752034875690036,
-      "lng": -97.06907583181928
+      "lat": 32.826412550333,
+      "lng": -96.68671888412548
     },
     {
       "id": "shp_100",
       "client_name": "DHL",
       "container_label": "EWR-581-250520-100",
       "status": "IN_TRANSIT",
-      "assignment_id": "as_011",
-      "arrival_date": "2026-02-23T07:53:26.834Z",
-      "delivery_by_date": "2026-02-25T07:53:26.834Z",
-      "eta": "2026-02-25T05:53:26.834Z",
+      "assignment_id": "as_015",
+      "arrival_date": "2026-02-17T08:39:54.144Z",
+      "delivery_by_date": "2026-02-19T08:39:54.144Z",
+      "eta": "2026-02-19T06:39:54.144Z",
       "warehouse_id": "581",
-      "lat": 32.816407656340026,
-      "lng": -97.08486689754211
+      "lat": 32.75608755387557,
+      "lng": -97.21047611330549
     }
   ],
   "assignments": [
@@ -1318,11 +1305,13 @@
       "label": "TX-121",
       "status": "IN_TRANSIT",
       "clients": [
-        "Samsung",
-        "CargoTrans",
-        "Oceanic"
+        "ShipCo",
+        "Sony",
+        "Logix",
+        "Oceanic",
+        "Samsung"
       ],
-      "shipment_count": 4
+      "shipment_count": 10
     },
     {
       "id": "as_002",
@@ -1330,54 +1319,50 @@
       "status": "IN_TRANSIT",
       "clients": [
         "DHL",
-        "Oceanic",
-        "CargoTrans",
-        "Sony",
-        "Logix"
+        "Sony"
       ],
-      "shipment_count": 5
+      "shipment_count": 2
     },
     {
       "id": "as_003",
       "label": "TX-123",
       "status": "IN_TRANSIT",
       "clients": [
+        "CargoTrans",
+        "Logix",
+        "Samsung",
+        "DHL",
+        "Oceanic",
         "Sony"
       ],
-      "shipment_count": 1
+      "shipment_count": 9
     },
     {
       "id": "as_004",
       "label": "TX-124",
       "status": "IN_TRANSIT",
       "clients": [
-        "Logix",
-        "Oceanic",
-        "Sony",
-        "CargoTrans"
+        "Samsung",
+        "Oceanic"
       ],
-      "shipment_count": 8
+      "shipment_count": 2
     },
     {
       "id": "as_005",
       "label": "TX-125",
-      "status": "IN_TRANSIT",
-      "clients": [
-        "Samsung",
-        "Sony",
-        "ShipCo"
-      ],
-      "shipment_count": 4
+      "status": "OPEN",
+      "clients": [],
+      "shipment_count": 0
     },
     {
       "id": "as_006",
       "label": "TX-126",
       "status": "IN_TRANSIT",
       "clients": [
-        "Sony",
-        "Oceanic",
-        "DHL",
-        "Samsung"
+        "Samsung",
+        "ShipCo",
+        "Logix",
+        "CargoTrans"
       ],
       "shipment_count": 5
     },
@@ -1386,12 +1371,10 @@
       "label": "TX-127",
       "status": "IN_TRANSIT",
       "clients": [
-        "DHL",
-        "Logix",
-        "Samsung",
-        "ShipCo",
+        "Oceanic",
         "CargoTrans",
-        "Oceanic"
+        "ShipCo",
+        "Sony"
       ],
       "shipment_count": 7
     },
@@ -1400,52 +1383,54 @@
       "label": "TX-128",
       "status": "IN_TRANSIT",
       "clients": [
-        "Logix",
         "Samsung",
+        "ShipCo",
+        "Sony",
+        "Oceanic",
         "DHL",
         "CargoTrans",
-        "Oceanic",
-        "ShipCo"
+        "Logix"
       ],
-      "shipment_count": 8
+      "shipment_count": 10
     },
     {
       "id": "as_009",
       "label": "TX-129",
       "status": "IN_TRANSIT",
       "clients": [
-        "Samsung"
+        "Samsung",
+        "CargoTrans",
+        "Logix"
       ],
-      "shipment_count": 1
+      "shipment_count": 3
     },
     {
       "id": "as_010",
       "label": "TX-130",
       "status": "IN_TRANSIT",
       "clients": [
-        "Samsung",
-        "ShipCo",
-        "CargoTrans"
+        "Logix",
+        "ShipCo"
       ],
-      "shipment_count": 4
+      "shipment_count": 3
     },
     {
       "id": "as_011",
       "label": "TX-131",
       "status": "IN_TRANSIT",
       "clients": [
-        "ShipCo",
+        "Samsung",
         "DHL",
         "Sony"
       ],
-      "shipment_count": 5
+      "shipment_count": 4
     },
     {
       "id": "as_012",
       "label": "TX-132",
       "status": "IN_TRANSIT",
       "clients": [
-        "ShipCo"
+        "Logix"
       ],
       "shipment_count": 1
     },
@@ -1454,34 +1439,35 @@
       "label": "TX-133",
       "status": "IN_TRANSIT",
       "clients": [
-        "Sony"
+        "Oceanic",
+        "DHL",
+        "ShipCo"
       ],
-      "shipment_count": 1
+      "shipment_count": 3
     },
     {
       "id": "as_014",
       "label": "TX-134",
       "status": "IN_TRANSIT",
       "clients": [
-        "ShipCo",
         "CargoTrans",
-        "Logix",
         "DHL",
-        "Sony"
+        "Sony",
+        "Oceanic"
       ],
-      "shipment_count": 8
+      "shipment_count": 4
     },
     {
       "id": "as_015",
       "label": "TX-135",
       "status": "IN_TRANSIT",
       "clients": [
-        "Oceanic",
-        "ShipCo",
         "DHL",
-        "Logix"
+        "Logix",
+        "Oceanic",
+        "ShipCo"
       ],
-      "shipment_count": 5
+      "shipment_count": 6
     }
   ]
 }

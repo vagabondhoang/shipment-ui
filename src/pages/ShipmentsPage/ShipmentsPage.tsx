@@ -104,7 +104,7 @@ export function ShipmentsPage() {
   }, [shipments]);
 
   return (
-    <div style={{ padding: 16 }}>
+    <div style={{ padding: 16, paddingTop: 0 }}>
       <ShipmentsToolbar
         searchText={search}
         onSearchTextChange={setSearch}
@@ -115,7 +115,7 @@ export function ShipmentsPage() {
       />
       <button
         style={{
-          marginTop: 16,
+          marginTop: 8,
           border: "1px solid #1d4ed8",
           color: "#1d4ed8",
           background: "transparent",
@@ -131,8 +131,8 @@ export function ShipmentsPage() {
         style={{
           display: "grid",
           gridTemplateColumns: "minmax(240px, 1fr) 2fr",
-          gap: 16,
-          marginTop: 16,
+          gap: 8,
+          marginTop: 8,
           alignItems: "start",
         }}
       >
@@ -140,7 +140,7 @@ export function ShipmentsPage() {
         <div
           ref={listRef}
           style={{
-            maxHeight: "calc(100vh - 140px)",
+            maxHeight: "calc(100vh - 180px)",
             overflowY: "auto",
             border: "1px solid #e5e7eb",
             borderRadius: 8,

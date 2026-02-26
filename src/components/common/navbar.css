@@ -1,0 +1,37 @@
+.navbar {
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 16px;
+    border-bottom: 1px solid #e5e7eb;
+    background: #fff;
+}
+
+.navbar-brand {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.navbar-links {
+    display: flex;
+    gap: 16px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #374151;
+    font-weight: 500;
+    padding: 6px 10px;
+    border-radius: 6px;
+}
+
+.nav-link:hover {
+    background: #f3f4f6;
+}
+
+.nav-link.active {
+    background: #1d4ed8;
+    color: #fff;
+}

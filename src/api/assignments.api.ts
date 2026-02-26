@@ -8,3 +8,13 @@ export async function fetchAssignments(): Promise<Assignment[]> {
     if (!res.ok) throw new Error("Failed to fetch assignments");
     return res.json();
 }
+
+export async function updateAssignment(id: string, data: Partial<Assignment>): Promise<Assignment> {
+    const res = await fetch(`${BASE_URL}/assignments/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+    });
+    if (!res.ok) throw new Error("Failed to update assignment");
+    return res.json();
+}
