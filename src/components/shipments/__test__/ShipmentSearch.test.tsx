@@ -1,18 +1,24 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { ShipmentSearch } from "../ShipmentSearch";
+import { SearchInput } from "../../common/SearchInput";
 
 import { useState } from "react";
 
 function Wrapper() {
   const [value, setValue] = useState("");
-  return <ShipmentSearch value={value} onChange={setValue} />;
+  return <SearchInput value={value} onChange={setValue} />;
 }
 
 describe("ShipmentSearch", () => {
   it("renders search input with correct role and placeholder", () => {
-    render(<ShipmentSearch value="" onChange={vi.fn()} />);
+    render(
+      <SearchInput
+        value=""
+        onChange={vi.fn()}
+        placeholder="search by client or container label"
+      />
+    );
 
     const search = screen.getByRole("search");
     const input = screen.getByPlaceholderText(
@@ -36,7 +42,7 @@ describe("ShipmentSearch", () => {
   });
 
   it("shows spinner when loading", () => {
-    render(<ShipmentSearch value="sam" onChange={vi.fn()} loading />);
+    render(<SearchInput value="sam" onChange={vi.fn()} loading />);
 
     const spinner = screen.getByRole("status", { name: /loading/i });
 
@@ -49,7 +55,7 @@ describe("ShipmentSearch", () => {
   });
 
   it("sets aria-busy on input when loading", () => {
-    render(<ShipmentSearch value="sam" onChange={vi.fn()} loading />);
+    render(<SearchInput value="sam" onChange={vi.fn()} loading />);
 
     const input = screen.getByRole("textbox");
 
@@ -57,7 +63,7 @@ describe("ShipmentSearch", () => {
   });
 
   it("shows clear button when there is value and not loading", () => {
-    render(<ShipmentSearch value="sam" onChange={vi.fn()} loading={false} />);
+    render(<SearchInput value="sam" onChange={vi.fn()} loading={false} />);
 
     const clearButton = screen.getByRole("button", {
       name: /clear search/i,
@@ -70,7 +76,7 @@ describe("ShipmentSearch", () => {
     const user = userEvent.setup();
     const onChange = vi.fn();
 
-    render(<ShipmentSearch value="sam" onChange={onChange} />);
+    render(<SearchInput value="sam" onChange={onChange} />);
 
     const clearButton = screen.getByRole("button", {
       name: /clear search/i,
@@ -85,7 +91,7 @@ describe("ShipmentSearch", () => {
     const user = userEvent.setup();
     const onChange = vi.fn();
 
-    render(<ShipmentSearch value="" onChange={onChange} />);
+    render(<SearchInput value="" onChange={onChange} />);
 
     const input = screen.getByRole("textbox");
 

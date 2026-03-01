@@ -1,17 +1,15 @@
 import { useEffect, useState, useTransition, useCallback } from "react";
-import { fetchShipments } from "../api/shipments.api";
-import type { Shipment, ShipmentStatus } from "@/types/shipment";
+import { fetchAssignments } from "../api/assignments.api";
 import { useDebounce } from "./useDebounce";
 
 import { ensureMinDelay } from "@/utils/ensureMinDelay";
 import { MIN_LOADING_TIME, PAGE_SIZE } from "@/constants/shipmentStatus";
 
 import { readShipmentQuery } from "@/utils/query";
+import type { Assignment, AssignmentStatus } from "@/types/assignment";
 
-
-
-interface UseShipmentsResult {
-  shipments: Shipment[];
+interface UseAssignmentsResult {
+  assignments: Assignment[];
   loading: boolean;
   isPending: boolean;
   error: Error | null;
@@ -22,21 +20,21 @@ interface UseShipmentsResult {
   loadMore: () => void;
   hasMore: boolean;
 
-  updateShipmentOptimistic: (id: string, data: Partial<Shipment>) => void;
-  deleteShipmentOptimistic: (id: string) => void;
-  addShipmentOptimistic: (shipment: Shipment) => void;
-  refetchShipments: () => void;
+  updateAssignmentOptimistic: (id: string, data: Partial<Assignment>) => void;
+  deleteAssignmentOptimistic: (id: string) => void;
+  addAssignmentOptimistic: (assignment: Assignment) => void;
+  refetchAssignments: () => void;
 
   loadingSource?: "search" | "filter" | null;
   setLoadingSource: (source: "search" | "filter" | null) => void;
 
 }
 
-export function useShipments(statusFilter: ShipmentStatus[]): UseShipmentsResult {
+export function useAssignments(statusFilter: AssignmentStatus[]): UseAssignmentsResult {
   const initial = readShipmentQuery();
 
   const [search, setSearchRaw] = useState(initial.q || "");
-  const [shipments, setShipments] = useState<Shipment[]>([]);
+  const [assignments, setAssignments] = useState<Assignment[]>([]);
   const [isPending, startTransition] = useTransition();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
@@ -59,7 +57,8 @@ export function useShipments(statusFilter: ShipmentStatus[]): UseShipmentsResult
     }
   };
 
-  // Fetch shipments
+
+  // Fetch Assignments
   useEffect(() => {
   let cancelled = false;
 
@@ -69,7 +68,7 @@ export function useShipments(statusFilter: ShipmentStatus[]): UseShipmentsResult
     setError(null);
 
     try {
-      const { data, total } = await fetchShipments({
+      const { data, total } = await fetchAssignments({
         page,
         perPage: PAGE_SIZE,
         q: debouncedSearch || undefined,
@@ -81,7 +80,7 @@ export function useShipments(statusFilter: ShipmentStatus[]): UseShipmentsResult
       if (cancelled) return;
 
       setTotal(total);
-      setShipments((prev) =>
+      setAssignments((prev) =>
         page === 1 ? data : [...prev, ...data]
       );
     } catch (e) {
@@ -98,9 +97,9 @@ export function useShipments(statusFilter: ShipmentStatus[]): UseShipmentsResult
   };
 }, [page, debouncedSearch, statusFilter, refetchIndex]);
 
-const updateShipmentOptimistic = useCallback(
-    (id: string, data: Partial<Shipment>) => {
-      setShipments((prev) =>
+const updateAssignmentOptimistic = useCallback(
+    (id: string, data: Partial<Assignment>) => {
+      setAssignments((prev) =>
         prev.map((s) =>
           s.id === id ? { ...s, ...data } : s
         )
@@ -109,21 +108,21 @@ const updateShipmentOptimistic = useCallback(
     []
   );
 
-  const deleteShipmentOptimistic = useCallback((id: string) => {
-    setShipments((prev) => prev.filter((s) => s.id !== id));
+  const deleteAssignmentOptimistic = useCallback((id: string) => {
+    setAssignments((prev) => prev.filter((s) => s.id !== id));
   }, []);
 
-  const addShipmentOptimistic = useCallback((shipment: Shipment) => {
-    setShipments((prev) => [shipment, ...prev]);
+  const addAssignmentOptimistic = useCallback((assignment: Assignment) => {
+    setAssignments((prev) => [assignment, ...prev]);
   }, []);
 
-  const refetchShipments = useCallback(() => {
+  const refetchAssignments = useCallback(() => {
     startTransition(() => {
       setRefetchIndex((i) => i + 1);
     });
   }, []);
 
-  const hasMore = shipments.length < total;
+  const hasMore = assignments.length < total;
 
   const loadMore = () => {
     if (!loading && hasMore) {
@@ -134,7 +133,7 @@ const updateShipmentOptimistic = useCallback(
   };
 
   return {
-    shipments,
+    assignments,
     loading,
     isPending,
     error,
@@ -147,9 +146,9 @@ const updateShipmentOptimistic = useCallback(
     loadMore,
     hasMore,
 
-    updateShipmentOptimistic,
-    refetchShipments,
-    deleteShipmentOptimistic,
-    addShipmentOptimistic,
+    updateAssignmentOptimistic,
+    deleteAssignmentOptimistic,
+    addAssignmentOptimistic,
+    refetchAssignments,
   };
 }

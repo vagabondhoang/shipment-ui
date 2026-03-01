@@ -2,6 +2,9 @@ type Props = {
   value?: string;
   onChange: (value: string) => void;
   loading?: boolean;
+  id?: string;
+  label?: string;
+  placeholder?: string;
 };
 
 function Spinner() {
@@ -21,7 +24,14 @@ function Spinner() {
   );
 }
 
-export function ShipmentSearch({ value, onChange, loading }: Props) {
+export function SearchInput({
+  value,
+  onChange,
+  loading,
+  id = "search-input",
+  label = "Search",
+  placeholder = "Search...",
+}: Props) {
   return (
     <form
       style={{
@@ -30,13 +40,13 @@ export function ShipmentSearch({ value, onChange, loading }: Props) {
       role="search"
       onSubmit={(e) => e.preventDefault()} // Prevent form submission
     >
-      <label htmlFor="shipment-search" style={{ display: "none" }}>
-        Search Shipments
+      <label htmlFor={id} style={{ display: "none" }}>
+        {label}
       </label>
       <input
-        id="shipment-search"
+        id={id}
         type="text"
-        placeholder="Search by client or container label..."
+        placeholder={placeholder}
         value={value}
         onChange={(e) => onChange(e.target.value)}
         style={{

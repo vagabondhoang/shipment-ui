@@ -4,19 +4,17 @@ import toast from "react-hot-toast";
 import type { ShipmentStatus } from "@/types/shipment";
 import { STATUS_OPTIONS } from "@/constants/shipmentStatus";
 import type { Shipment } from "@/types/shipment";
-import {
-  updateShipment,
-  deleteShipment,
-  fetchShipmentsByAssignment,
-} from "@/api/shipments.api";
+import { deleteShipment } from "@/api/shipments.api";
 import { ShipmentMap } from "./ShipmentMap";
 import { fetchAssignments } from "@/api/assignments.api";
 import type { Assignment } from "@/types/assignment";
 import { toDateInputValue } from "@/utils/shipment";
 import { ConfirmDialog } from "../common/ConfirmDialog";
 
-import { syncAssignmentStatus } from "@/utils/shipment";
-import { updateAssignment } from "@/api/assignments.api";
+import {
+  updateShipmentWithAssignmentSync,
+  recalculateAssignmentStatus,
+} from "@/services/shipmentDomain";
 
 function DetailRow({
   label,
@@ -65,17 +63,19 @@ const primaryBtnStyle = {
   backgroundColor: "#2563eb",
   color: "#fff",
   border: "none",
-  padding: "10px 20px",
+  padding: "8px 12px",
   borderRadius: "8px",
   cursor: "pointer",
-  fontWeight: 600,
+  height: "fit-content",
+  whiteSpace: "nowrap",
 };
 const secondaryBtnStyle = {
   backgroundColor: "#fff",
   border: "1px solid #ddd",
-  padding: "10px 20px",
+  padding: "8px 12px",
   borderRadius: "8px",
   cursor: "pointer",
+  height: "fit-content",
 };
 
 function buildInitialValues(shipment: Shipment) {
@@ -89,28 +89,16 @@ function buildInitialValues(shipment: Shipment) {
   };
 }
 
-async function recalculateAssignmentStatus(assignmentId: string) {
-  const shipments = await fetchShipmentsByAssignment(assignmentId);
-
-  const nextStatus = syncAssignmentStatus(shipments);
-  const shipmentCount = shipments.length;
-
-  await updateAssignment(assignmentId, {
-    status: nextStatus,
-    shipment_count: shipmentCount,
-  });
-}
-
 export function ShipmentDetailsPanel({
   shipment,
+  hideMap = false,
   onSelect,
-  updateShipmentOptimistic,
-  deleteShipmentOptimistic,
+  refetch,
 }: {
   shipment: Shipment;
-  onSelect: (id: string) => void;
-  updateShipmentOptimistic: (id: string, data: Partial<Shipment>) => void;
-  deleteShipmentOptimistic?: (id: string) => void;
+  hideMap?: boolean;
+  onSelect?: (id: string) => void;
+  refetch?: (params?: boolean) => void;
 }) {
   const [assignments, setAssignments] = useState<Assignment[]>([]);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
@@ -122,6 +110,14 @@ export function ShipmentDetailsPanel({
   );
   const [isDirty, setIsDirty] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    const next = buildInitialValues(shipment);
+
+    initialValuesRef.current = next;
+    setFormValues(next);
+    setIsDirty(false);
+  }, [shipment.id]);
 
   function updateField<K extends keyof typeof initialValuesRef.current>(
     key: K,
@@ -147,60 +143,28 @@ export function ShipmentDetailsPanel({
   const handleSubmit = async () => {
     try {
       setIsSubmitting(true);
-      const prevStatus = initialValuesRef.current.status;
-      const prevAssignmentId = initialValuesRef.current.assignment_id;
-      const status = formValues.status;
-
-      const payload = {
-        status,
-        assignment_id:
-          prevStatus !== status && status === "OPEN"
-            ? null
-            : formValues.assignment_id,
-        lat: formValues.lat,
-        lng: formValues.lng,
-        arrival_date: new Date(formValues.arrival_date).toISOString(),
-        delivery_by_date: new Date(formValues.delivery_by_date).toISOString(),
-      };
-
-      const updated = await updateShipment(shipment.id, payload);
+      const updated = await updateShipmentWithAssignmentSync(
+        shipment,
+        formValues
+      );
 
       toast.success("Shipment updated successfully");
 
-      const next = {
-        ...formValues,
-        assignment_id: payload.assignment_id ?? "",
-        status: payload.status,
-      };
+      const assignmentChanged =
+        !updated.assignment_id ||
+        shipment.assignment_id !== formValues.assignment_id;
 
-      updateShipmentOptimistic(shipment.id, next);
+      refetch?.(assignmentChanged);
 
-      initialValuesRef.current = next;
-      setFormValues(next);
+      initialValuesRef.current = formValues;
       setIsDirty(false);
 
-      const shouldRecalculate =
-        prevAssignmentId !== updated.assignment_id ||
-        prevStatus !== updated.status;
-
-      if (!shouldRecalculate) return;
-
-      /**
-       * Recalculate affected assignments
-       * - old assignment (shipment removed)
-       * - new assignment (shipment added)
-       */
-      const affectedAssignmentIds = new Set<string>();
-      if (prevAssignmentId) {
-        affectedAssignmentIds.add(prevAssignmentId);
-      }
-      if (updated.assignment_id) {
-        affectedAssignmentIds.add(updated.assignment_id);
+      if (!assignmentChanged) {
+        refetch?.();
+        return;
       }
 
-      for (const id of affectedAssignmentIds) {
-        await recalculateAssignmentStatus(id);
-      }
+      refetch?.(assignmentChanged);
     } catch (error) {
       console.error("Failed to update shipment:", error);
       toast.error("Failed to update shipment");
@@ -212,13 +176,13 @@ export function ShipmentDetailsPanel({
   useEffect(() => {
     fetchAssignments()
       .then((data) => {
-        setAssignments(data);
+        setAssignments(data.data);
       })
       .catch((err) => {
         console.error("Failed to fetch assignments for details panel:", err);
       });
 
-    onSelect(shipment.id);
+    onSelect?.(shipment.id);
   }, [shipment.id, onSelect]);
 
   const handleDelete = async () => {
@@ -231,7 +195,7 @@ export function ShipmentDetailsPanel({
       }
       toast.success("Shipment deleted successfully");
       setShowDeleteConfirm(false);
-      deleteShipmentOptimistic?.(shipment.id);
+      refetch?.();
     } catch (error) {
       toast.error(`Failed to delete shipment ${shipment.id}: ${error}`);
     }
@@ -239,194 +203,184 @@ export function ShipmentDetailsPanel({
 
   return (
     <>
-      <section
-        style={{
-          border: "1px solid #ddd",
-          borderRadius: 8,
-          padding: 16,
-          background: "#fff",
-          maxHeight: "calc(100vh - 180px)",
-          overflowY: "auto",
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleSubmit();
         }}
+        key={shipment.id}
       >
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            handleSubmit();
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: 20,
+            gap: 8,
           }}
         >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              marginBottom: 20,
-            }}
-          >
-            <h2 style={{ fontSize: 20, margin: 0 }}>Shipment Management</h2>
-            {!isDirty && (
+          <h2 style={{ fontSize: 20, margin: 0 }}>Shipment Details</h2>
+          {!isDirty && (
+            <button
+              type="button"
+              onClick={() => setShowDeleteConfirm(true)}
+              style={{
+                background: "transparent",
+                color: "#dc2626",
+                border: "none",
+                fontSize: 14,
+                cursor: "pointer",
+              }}
+            >
+              🗑 Delete shipment
+            </button>
+          )}
+          {isDirty && (
+            <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
               <button
                 type="button"
-                onClick={() => setShowDeleteConfirm(true)}
-                style={{
-                  background: "transparent",
-                  color: "#dc2626",
-                  border: "none",
-                  fontSize: 14,
-                  cursor: "pointer",
+                disabled={isSubmitting}
+                style={secondaryBtnStyle}
+                onClick={() => {
+                  setFormValues(initialValuesRef.current);
+                  setIsDirty(false);
                 }}
               >
-                🗑 Delete shipment
+                Discard
               </button>
-            )}
-            {isDirty && (
-              <div style={{ display: "flex", gap: 8 }}>
-                <button
-                  type="button"
-                  disabled={isSubmitting}
-                  style={secondaryBtnStyle}
-                  onClick={() => {
-                    setFormValues(initialValuesRef.current);
-                    setIsDirty(false);
-                  }}
-                >
-                  Discard
-                </button>
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  style={primaryBtnStyle}
-                >
-                  {isSubmitting ? "Saving..." : "Save Changes"}
-                </button>
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                style={primaryBtnStyle}
+              >
+                {isSubmitting ? "Saving..." : "Save Changes"}
+              </button>
+            </div>
+          )}
+        </div>
+
+        <fieldset
+          disabled={isSubmitting}
+          style={{
+            border: "none",
+            padding: 0,
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: "16px",
+          }}
+        >
+          <DetailRow label="Client Name">
+            <input
+              name="client_name"
+              defaultValue={shipment.client_name}
+              readOnly
+              style={readOnlyInputStyle}
+            />
+          </DetailRow>
+
+          <DetailRow label="Container Label">
+            <input
+              name="container_label"
+              defaultValue={shipment.container_label}
+              readOnly
+              style={readOnlyInputStyle}
+            />
+          </DetailRow>
+
+          <DetailRow label="Status">
+            <select
+              name="status"
+              value={formValues.status}
+              onChange={(e) =>
+                updateField("status", e.target.value as ShipmentStatus)
+              }
+              disabled={isStatusDisabled}
+              style={inputStyle}
+            >
+              {STATUS_OPTIONS.map((opt) => (
+                <option key={opt.value} value={opt.value}>
+                  {opt.label}
+                </option>
+              ))}
+            </select>
+            {isStatusDisabled && (
+              <div style={{ marginTop: 4, color: "#1d4ed8", fontSize: 11 }}>
+                * Please assign this shipment before updating status from OPEN.
               </div>
             )}
-          </div>
-
-          <fieldset
-            disabled={isSubmitting}
-            style={{
-              border: "none",
-              padding: 0,
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: "16px",
-            }}
-          >
-            <DetailRow label="Client Name">
-              <input
-                name="client_name"
-                defaultValue={shipment.client_name}
-                readOnly
-                style={readOnlyInputStyle}
-              />
-            </DetailRow>
-
-            <DetailRow label="Container Label">
-              <input
-                name="container_label"
-                defaultValue={shipment.container_label}
-                readOnly
-                style={readOnlyInputStyle}
-              />
-            </DetailRow>
-
-            <DetailRow label="Status">
-              <select
-                name="status"
-                value={formValues.status}
-                onChange={(e) =>
-                  updateField("status", e.target.value as ShipmentStatus)
-                }
-                disabled={isStatusDisabled}
-                style={inputStyle}
-              >
-                {STATUS_OPTIONS.map((opt) => (
-                  <option key={opt.value} value={opt.value}>
-                    {opt.label}
-                  </option>
-                ))}
-              </select>
-              {isStatusDisabled && (
+            {!isStatusDisabled &&
+              initialValuesRef.current?.status !== "OPEN" && (
                 <div style={{ marginTop: 4, color: "#1d4ed8", fontSize: 11 }}>
-                  * Please assign this shipment before updating status from
-                  OPEN.
+                  * Changing status to OPEN will unassign the shipment from any
+                  assignment.
                 </div>
               )}
-              {!isStatusDisabled &&
-                initialValuesRef.current?.status !== "OPEN" && (
-                  <div style={{ marginTop: 4, color: "#1d4ed8", fontSize: 11 }}>
-                    * Changing status to OPEN will unassign the shipment from
-                    any assignment.
-                  </div>
-                )}
-            </DetailRow>
-            <DetailRow label="Assignment">
-              <select
-                name="assignment_id"
-                value={formValues.assignment_id ?? ""}
-                onChange={(e) => updateField("assignment_id", e.target.value)}
-                style={inputStyle}
-              >
-                <option value="">-- Select Assignment --</option>
-                {assignments.map((as) => (
-                  <option key={as.id} value={String(as.id)}>
-                    {as.label} ({as.id})
-                  </option>
-                ))}
-              </select>
-            </DetailRow>
+          </DetailRow>
+          <DetailRow label="Assignment">
+            <select
+              name="assignment_id"
+              value={formValues.assignment_id ?? ""}
+              onChange={(e) => updateField("assignment_id", e.target.value)}
+              style={inputStyle}
+            >
+              <option value="">-- Select Assignment --</option>
+              {assignments.map((as) => (
+                <option key={as.id} value={String(as.id)}>
+                  {as.label} ({as.id})
+                </option>
+              ))}
+            </select>
+          </DetailRow>
 
-            <DetailRow label="Arrival Date">
-              <input
-                type="date"
-                name="arrival_date"
-                value={formValues.arrival_date}
-                onChange={(e) => updateField("arrival_date", e.target.value)}
-                style={inputStyle}
-              />
-            </DetailRow>
-            <DetailRow label="Delivery By">
-              <input
-                type="date"
-                name="delivery_by_date"
-                value={formValues.delivery_by_date}
-                onChange={(e) =>
-                  updateField("delivery_by_date", e.target.value)
-                }
-                style={inputStyle}
-              />
-            </DetailRow>
+          <DetailRow label="Arrival Date">
+            <input
+              type="date"
+              name="arrival_date"
+              value={formValues.arrival_date}
+              onChange={(e) => updateField("arrival_date", e.target.value)}
+              style={inputStyle}
+            />
+          </DetailRow>
+          <DetailRow label="Delivery By">
+            <input
+              type="date"
+              name="delivery_by_date"
+              value={formValues.delivery_by_date}
+              onChange={(e) => updateField("delivery_by_date", e.target.value)}
+              style={inputStyle}
+            />
+          </DetailRow>
 
-            <DetailRow label="Lat">
-              <input
-                name="lat"
-                type="number"
-                step="any"
-                min={32.55}
-                max={33.05}
-                value={formValues.lat}
-                onChange={(e) => updateField("lat", parseFloat(e.target.value))}
-                style={inputStyle}
-              />
-            </DetailRow>
-            <DetailRow label="Lng">
-              <input
-                name="lng"
-                type="number"
-                step="any"
-                min={-97.4}
-                max={-96.5}
-                value={formValues.lng}
-                onChange={(e) => updateField("lng", parseFloat(e.target.value))}
-                style={inputStyle}
-              />
-            </DetailRow>
-            <DetailRow label="Warehouse">{shipment.warehouse_id}</DetailRow>
-          </fieldset>
-        </form>
+          <DetailRow label="Lat">
+            <input
+              name="lat"
+              type="number"
+              step="any"
+              min={32.55}
+              max={33.05}
+              value={formValues.lat}
+              onChange={(e) => updateField("lat", parseFloat(e.target.value))}
+              style={inputStyle}
+            />
+          </DetailRow>
+          <DetailRow label="Lng">
+            <input
+              name="lng"
+              type="number"
+              step="any"
+              min={-97.4}
+              max={-96.5}
+              value={formValues.lng}
+              onChange={(e) => updateField("lng", parseFloat(e.target.value))}
+              style={inputStyle}
+            />
+          </DetailRow>
+          <DetailRow label="Warehouse">{shipment.warehouse_id}</DetailRow>
+        </fieldset>
+      </form>
 
-        {/* Map */}
+      {/* Map */}
+      {!hideMap && (
         <div style={{ marginTop: 20 }}>
           <div style={{ fontSize: 14, fontWeight: 600, marginBottom: 8 }}>
             Shipment Location
@@ -448,7 +402,7 @@ export function ShipmentDetailsPanel({
             </div>
           )}
         </div>
-      </section>
+      )}
       <ConfirmDialog
         open={showDeleteConfirm}
         title="Delete shipment?"

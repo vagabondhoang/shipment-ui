@@ -1,11 +1,11 @@
 import type { ShipmentStatus } from "@/types/shipment";
 
-import { ShipmentStatusFilter } from "./ShipmentStatusFilter";
-import { ShipmentSearch } from "./ShipmentSearch";
+import { ShipmentStatusFilter } from "../shipments/ShipmentStatusFilter";
+import { SearchInput } from "./SearchInput";
 
-import "./shipment.css";
+import "./toolbar.css";
 
-interface ShipmentsToolbarProps {
+interface ToolbarProps {
   searchText?: string;
   onSearchTextChange: (value: string) => void;
 
@@ -14,24 +14,27 @@ interface ShipmentsToolbarProps {
 
   onClear: () => void;
   loading?: boolean;
+  placeholder?: string;
 }
 
-export const ShipmentsToolbar: React.FC<ShipmentsToolbarProps> = ({
+export const Toolbar: React.FC<ToolbarProps> = ({
   searchText,
   onSearchTextChange,
   statusFilter,
   onStatusFilterChange,
   onClear,
   loading,
+  placeholder,
 }) => {
   return (
-    <div className="shipments-toolbar">
+    <div className="toolbar">
       {/* Search */}
       <div>
-        <ShipmentSearch
+        <SearchInput
           value={searchText}
           onChange={onSearchTextChange}
           loading={loading}
+          placeholder={placeholder}
         />
       </div>
 
