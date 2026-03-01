@@ -38,3 +38,22 @@ export async function updateAssignment(id: string, data: Partial<Assignment>): P
     if (!res.ok) throw new Error("Failed to update assignment");
     return res.json();
 }
+
+export async function createAssignment(data: Omit<Assignment, "id">): Promise<Assignment> {
+    const res = await fetch(`${BASE_URL}/assignments`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+    });
+    if (!res.ok) throw new Error("Failed to create assignment");
+    return res.json();
+}
+
+export async function deleteAssignment(id: string): Promise<void> {
+    const res = await fetch(`${BASE_URL}/assignments/${id}`, {
+        method: "DELETE",
+    });
+    if (!res.ok) throw new Error("Failed to delete assignment");
+
+    return
+}

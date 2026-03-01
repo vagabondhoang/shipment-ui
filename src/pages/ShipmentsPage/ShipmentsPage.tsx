@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect, useLayoutEffect } from "react";
+import { useState, useMemo, useEffect } from "react";
 
 import {
   ShipmentsListPanel,
@@ -12,8 +12,6 @@ import { readShipmentQuery, writeShipmentQuery } from "@/utils/query";
 import { ConfirmDialog } from "@/components/common/ConfirmDialog";
 import { CreateShipmentForm } from "@/components/shipments/CreateShipmentForm";
 import { Toolbar } from "@/components/common/Toolbar";
-
-import { useScrollAnchor } from "@/hooks/useScrollAnchor";
 
 export function ShipmentsPage() {
   const initial = readShipmentQuery();
@@ -38,8 +36,6 @@ export function ShipmentsPage() {
     refetchShipments,
   } = useShipments(statusFilter);
 
-  const { listRef, saveAnchor, restoreAnchor } = useScrollAnchor();
-
   const grouped = useMemo(() => groupShipmentsByStatus(shipments), [shipments]);
 
   const selectedShipment = useMemo(() => {
@@ -62,14 +58,8 @@ export function ShipmentsPage() {
   };
 
   const handleLoadMore = () => {
-    saveAnchor("[data-shipment-item]", "shipmentItem");
-
     loadMore();
   };
-
-  useLayoutEffect(() => {
-    restoreAnchor();
-  }, [shipments, restoreAnchor]);
 
   useEffect(() => {
     writeShipmentQuery(search, statusFilter);
@@ -111,7 +101,6 @@ export function ShipmentsPage() {
       >
         {/* LEFT PANEL */}
         <div
-          ref={listRef}
           style={{
             maxHeight: "calc(100vh - 180px)",
             overflowY: "auto",

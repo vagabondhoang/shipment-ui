@@ -149,15 +149,12 @@ export function ShipmentDetailsPanel({
       );
 
       toast.success("Shipment updated successfully");
+      initialValuesRef.current = formValues;
+      setIsDirty(false);
 
       const assignmentChanged =
         !updated.assignment_id ||
         shipment.assignment_id !== formValues.assignment_id;
-
-      refetch?.(assignmentChanged);
-
-      initialValuesRef.current = formValues;
-      setIsDirty(false);
 
       if (!assignmentChanged) {
         refetch?.();

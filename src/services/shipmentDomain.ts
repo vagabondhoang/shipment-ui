@@ -21,8 +21,10 @@ export async function recalculateAssignmentStatus(assignmentId: string) {
   await updateAssignment(assignmentId, {
     status: nextStatus,
     shipment_count: shipmentCount,
+    clients: Array.from(new Set(shipments.map((s) => s.client_name))),
   });
 }
+
 export async function updateShipmentWithAssignmentSync(
   shipment: Shipment,
   formValues: ShipmentFormValues
@@ -42,6 +44,11 @@ export async function updateShipmentWithAssignmentSync(
   };
 
   const updated = await updateShipment(shipment.id, payload);
+  const assignmentChanged =
+        !updated.assignment_id ||
+        shipment.assignment_id !== formValues.assignment_id;
+
+  if(!assignmentChanged) return updated;
 
   const affectedAssignmentIds = new Set<string>();
 
@@ -55,6 +62,7 @@ export async function updateShipmentWithAssignmentSync(
     await updateAssignment(id, {
       status: nextStatus,
       shipment_count: shipments.length,
+      clients: Array.from(new Set(shipments.map((s) => s.client_name))),
     });
   }
 

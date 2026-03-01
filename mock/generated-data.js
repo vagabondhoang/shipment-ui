@@ -40,7 +40,7 @@ for (let j = 1; j <= 15; j++) {
     shipment_count: 0,
   });
 }
-for (let i = 1; i <= 100; i++) {
+for (let i = 1; i <= 15; i++) {
   const arrival = new Date(baseDate);
   arrival.setDate(arrival.getDate() - Math.floor(Math.random() * 10));
 

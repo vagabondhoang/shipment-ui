@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect, useLayoutEffect } from "react";
+import { useState, useMemo, useEffect } from "react";
 
 import { AssignmentListPanel } from "@/components/assignments";
 import { Toolbar } from "@/components/common/Toolbar";
@@ -10,10 +10,11 @@ import type { AssignmentStatus } from "@/types/assignment";
 import { useAssignments } from "@/hooks/useAssignments";
 import { groupAssignmentsByStatus } from "@/utils/assignment";
 
-import { useScrollAnchor } from "@/hooks/useScrollAnchor";
 import { AssignmentDetails } from "@/components/assignments";
 import type { Shipment } from "@/types/shipment";
 import { ShipmentsMap } from "@/components/shipments/ShipmentsMap";
+import { ConfirmDialog } from "@/components/common/ConfirmDialog";
+import { CreateAssignmentForm } from "@/components/assignments/CreateAssignmentForm";
 
 export const AssignmentsPage = () => {
   const initial = readShipmentQuery();
@@ -35,15 +36,12 @@ export const AssignmentsPage = () => {
     loading,
     isPending,
     error,
-    deleteAssignmentOptimistic,
     loadMore,
     hasMore,
     loadingSource,
     setLoadingSource,
     refetchAssignments,
   } = useAssignments(statusFilter);
-
-  const { listRef, saveAnchor, restoreAnchor } = useScrollAnchor();
 
   const [allShipments, setAllShipments] = useState<Shipment[]>([]);
 
@@ -73,14 +71,8 @@ export const AssignmentsPage = () => {
   };
 
   const handleLoadMore = () => {
-    saveAnchor("[data-assignment-item]", "assignmentItem");
-
     loadMore();
   };
-
-  useLayoutEffect(() => {
-    // restoreAnchor();
-  }, [assignments, restoreAnchor]);
 
   useEffect(() => {
     writeShipmentQuery(search, statusFilter);
@@ -136,7 +128,6 @@ export const AssignmentsPage = () => {
       >
         {/* ASSIGNMENT LIST */}
         <div
-          ref={listRef}
           style={{
             maxHeight: "calc(100vh - 180px)",
             overflowY: "auto",
@@ -195,8 +186,10 @@ export const AssignmentsPage = () => {
               assignment={selectedAssignment}
               selectedShipment={selectedShipment as Shipment}
               onSelect={setSelectedShipment}
-              deleteAssignmentOptimistic={deleteAssignmentOptimistic}
               shipments={allShipments}
+              onSuccess={() => {
+                refetchAssignments();
+              }}
             />
           </div>
         ) : (
@@ -263,6 +256,21 @@ export const AssignmentsPage = () => {
           </div>
         )}
       </div>
+      <ConfirmDialog
+        open={openModal}
+        title="Create Shipment"
+        onCancel={() => setOpenModal(false)}
+        submitFormId="create-shipment-form"
+      >
+        <CreateAssignmentForm
+          onSuccess={(shipment) => {
+            setOpenModal(false);
+            if (shipment) {
+              refetchAssignments();
+            }
+          }}
+        />
+      </ConfirmDialog>
     </div>
   );
 };
